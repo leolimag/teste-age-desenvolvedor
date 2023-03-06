@@ -27,7 +27,7 @@ public class ExameDAO {
 		}
 		
 	}
-	public List<Exame> get() throws SQLException {
+	public List<Exame> findAll() throws SQLException {
 		List<Exame> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exames")){
@@ -35,7 +35,7 @@ public class ExameDAO {
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
-					Exame exame = new Exame(result.getString("descricao"), result.getString("data"));
+					Exame exame = new Exame(result.getInt("id"), result.getString("descricao"), result.getString("data"));
 					list.add(exame);
 				}
 			} catch (Exception e) {

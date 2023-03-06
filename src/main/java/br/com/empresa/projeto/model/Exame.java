@@ -6,6 +6,11 @@ public class Exame {
 	private String descricao;
 	private String data;
 	
+	public Exame(Integer id, String descricao, String data) {
+		this.descricao = descricao;
+		this.data = data;
+		this.id = id;
+	}
 	public Exame(String descricao, String data) {
 		this.descricao = descricao;
 		this.data = data;
