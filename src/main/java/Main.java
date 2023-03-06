@@ -2,8 +2,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import br.com.empresa.projeto.business.ExameBusiness;
+import br.com.empresa.projeto.business.FuncionarioBusiness;
 import br.com.empresa.projeto.connection.ConnectionFactory;
 import br.com.empresa.projeto.model.Exame;
+import br.com.empresa.projeto.model.Funcionario;
 
 public class Main {
 
@@ -23,6 +25,16 @@ public class Main {
 			exameBusiness.getAll().forEach(System.out::println);
 			
 			//testando crud funcionario
+			Funcionario f = new Funcionario("bia");
+			Funcionario f2 = new Funcionario("leo");
+			FuncionarioBusiness fbusiness = new FuncionarioBusiness();
+			//fbusiness.insert(f);
+			//fbusiness.delete(f);
+			f.setId(3);
+			f2.setId(1);
+			fbusiness.update(f);
+			fbusiness.update(f2);
+			fbusiness.getAll().forEach(e -> System.out.println(e));
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

@@ -26,7 +26,7 @@ public class Funcionario {
 	}
 	@Override
 	public String toString() {
-		return "Exame [id=" + id + ", nome=" + nome + "]";
+		return "Funcionário [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }

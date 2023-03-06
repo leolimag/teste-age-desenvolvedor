@@ -17,7 +17,7 @@ public class FuncionarioDAO {
 	
 	public void insert(Funcionario funcionario) throws SQLException {
 		this.con.setAutoCommit(false);
-		try (PreparedStatement ps = this.con.prepareStatement("insert into exames (nome) values (?) ")){
+		try (PreparedStatement ps = this.con.prepareStatement("insert into funcionarios (nome) values (?) ")){
 			ps.setString(1, funcionario.getNome());
 			ps.execute();
 			this.con.commit();
@@ -34,7 +34,7 @@ public class FuncionarioDAO {
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
-					Funcionario funcionario = new Funcionario(result.getString("nome"));
+					Funcionario funcionario = new Funcionario(result.getInt("id"), result.getString("nome"));
 					list.add(funcionario);
 				}
 			} catch (Exception e) {
