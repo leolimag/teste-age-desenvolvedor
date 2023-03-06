@@ -9,6 +9,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		try (Connection con = new ConnectionFactory().getConnection()){
+			//testando crud exames
 			Exame exame = new Exame("exame 10", "30/11/2020");
 			ExameBusiness exameBusiness = new ExameBusiness();
 			exameBusiness.getAll().forEach(System.out::println);
@@ -20,6 +21,8 @@ public class Main {
 			//exameBusiness.update(exame);
 			exameBusiness.delete(exame);
 			exameBusiness.getAll().forEach(System.out::println);
+			
+			//testando crud funcionario
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
