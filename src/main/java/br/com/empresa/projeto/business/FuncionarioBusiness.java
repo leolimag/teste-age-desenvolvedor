@@ -1,29 +1,25 @@
 package br.com.empresa.projeto.business;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import br.com.empresa.projeto.connection.ConnectionFactory;
 import br.com.empresa.projeto.model.Funcionario;
 import br.com.empresa.projeto.model.FuncionarioDAO;
 
 public class FuncionarioBusiness {
 	
 	private FuncionarioDAO dao;
-	private Connection con;
 
 	public FuncionarioBusiness() {
-		try {
-			this.con = new ConnectionFactory().getConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		this.dao = new FuncionarioDAO(this.con);
+		this.dao = new FuncionarioDAO();
 	} 
 	
 	public List<Funcionario> getAll() throws SQLException{
 		return this.dao.findAll();
+	}
+	
+	public Funcionario getById(Integer id) throws SQLException{
+		return this.dao.findById(id);
 	}
 	
 	public void insert(Funcionario funcionario) throws SQLException {
