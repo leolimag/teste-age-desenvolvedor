@@ -7,12 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.empresa.projeto.connection.ConnectionFactory;
+
 public class FuncionarioDAO {
 	
 	private Connection con;	
+	private ConnectionFactory connectionFactory;
 	
-	public FuncionarioDAO(Connection con) {
-		this.con = con;
+	public FuncionarioDAO() {
+		this.connectionFactory = new ConnectionFactory();
+		this.con = connectionFactory.getConnection();
 	}
 	
 	public void insert(Funcionario funcionario) throws SQLException {
@@ -21,6 +25,7 @@ public class FuncionarioDAO {
 			ps.setString(1, funcionario.getNome());
 			ps.execute();
 			this.con.commit();
+			this.con.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -40,10 +45,32 @@ public class FuncionarioDAO {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
+			this.con.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return list;
+	}
+	
+	public Funcionario findById(Integer id) throws SQLException {
+		this.con.setAutoCommit(false);
+		Funcionario funcionario = null;
+		try (PreparedStatement ps = this.con.prepareStatement("select * from funcionarios where id = ?")){
+			ps.setInt(1, id);
+			ps.execute();
+			this.con.commit();
+			try(ResultSet result = ps.getResultSet()){
+				while(result.next()) {
+					funcionario = new Funcionario(result.getInt("id"), result.getString("nome"));
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return funcionario;
 	}
 	
 	public void update(Funcionario funcionario) throws SQLException {
@@ -53,6 +80,7 @@ public class FuncionarioDAO {
 			ps.setInt(2, funcionario.getId());
 			ps.execute();
 			this.con.commit();
+			this.con.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -63,6 +91,7 @@ public class FuncionarioDAO {
 			ps.setInt(1, funcionario.getId());
 			ps.execute();
 			this.con.commit();
+			this.con.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
