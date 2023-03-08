@@ -11,15 +11,15 @@
 </head>
 <body>
 	<header>
-	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> 
+	<a href="exames">Exames</a> <a href="funcionariosExames">Exames dos Funcionários</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> 
 	</header>
 	<h1>Funcionários</h1>
-	<a href="criaExame">Adicionar Funcionário</a>
+	<a href="criaFuncionario">Adicionar Funcionário</a>
 	<br>
 	<div>
 <%-- 		<c:property value="exames"/> --%>
 		<s:forEach items="${funcionarios}" var="funcionario">
-			<p>${funcionario.nome}<a href="selecionaFuncionario?id=${funcionario.id }"> Editar </a> <a onclick="confirmador(${funcionario.id })" href="#"> Deletar </a> </p> 
+			<p>${funcionario.nome}<a href="selecionaFuncionario?id=${funcionario.id }"> Editar </a> <a onclick="confirmadorFuncionario(${funcionario.id })" href="#"> Deletar </a> </p> 
 		</s:forEach>
 	</div>
 </body>

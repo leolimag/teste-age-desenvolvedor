@@ -5,6 +5,8 @@ public class Funcionario {
 	private Integer id;
 	private String nome;
 	
+	public Funcionario() {
+	}
 	public Funcionario(Integer id, String nome) {
 		this.nome = nome;
 		this.id = id;

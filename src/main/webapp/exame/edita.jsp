@@ -17,12 +17,12 @@
 				<br>
 				<div>
 					<label for="descricao">Descrição</label>
-					<input type="text" name="descricao" id="descricao" value="${exame.descricao}" >	
+					<input type="text" name="descricao" id="descricao" value="${exame.descricao}"  required>	
 				</div>
 				<br>
 				<div>
 					<label for="id">Data</label>
-					<input type="text" name="data" id="data" value="${exame.data}" >		
+					<input type="text" name="data" id="data" value="${exame.data}"  required>		
 				</div>
 				<br>
 				<div>

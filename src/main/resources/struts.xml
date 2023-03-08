@@ -29,7 +29,7 @@
       </action>
       
       <action name = "selecionaExame"  class="br.com.empresa.projeto.action.exame.SelecionaExameAction">
-		<result name = "success">/exame/editaExame.jsp</result>
+		<result name = "success">/exame/edita.jsp</result>
       </action>
       
       <action name = "editaExame"  class="br.com.empresa.projeto.action.exame.EditaExameAction">
@@ -39,7 +39,7 @@
       </action>
             
       <action name = "criaExame"  class="br.com.empresa.projeto.action.exame.CriaExameAction">
-		<result name = "success">/exame/criaExame.jsp</result>
+		<result name = "success">/exame/cria.jsp</result>
       </action>
       
       <action name = "adicionaExame"  class="br.com.empresa.projeto.action.exame.AdicionaExameAction">
@@ -52,6 +52,32 @@
       
        <action name = "funcionarios"  class="br.com.empresa.projeto.action.funcionario.ListaFuncionariosAction">
          <result name = "success">/funcionario/home.jsp</result>
+      </action>
+      
+     <action name = "selecionaFuncionario"  class="br.com.empresa.projeto.action.funcionario.SelecionaFuncionarioAction">
+		<result name = "success">/funcionario/edita.jsp</result>
+      </action>
+      
+      <action name = "editaFuncionario"  class="br.com.empresa.projeto.action.funcionario.EditaFuncionarioAction">
+	      <result type="redirectAction" name = "success">
+	       	<param name="actionName ">funcionarios</param>
+	      </result>
+      </action>
+      
+      <action name = "criaFuncionario"  class="br.com.empresa.projeto.action.funcionario.CriaFuncionarioAction">
+		<result name = "success">/funcionario/cria.jsp</result>
+      </action>
+      
+      <action name = "adicionaFuncionario"  class="br.com.empresa.projeto.action.funcionario.AdicionaFuncionarioAction">
+	      <result type="redirectAction" name = "success">
+	       	<param name="actionName ">funcionarios</param>
+	      </result>
+      </action>
+      
+      <action name = "deletaFuncionario"  class="br.com.empresa.projeto.action.funcionario.DeletaFuncionarioAction">
+	      <result type="redirectAction" name = "success">
+	       	<param name="actionName ">funcionarios</param>
+	      </result>
       </action>
       
       
