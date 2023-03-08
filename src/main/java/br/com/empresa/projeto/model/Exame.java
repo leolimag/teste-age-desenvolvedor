@@ -15,6 +15,9 @@ public class Exame {
 		this.descricao = descricao;
 		this.data = data;
 	}
+	public Exame() {
+		
+	}
 	public String getDescricao() {
 		return descricao;
 	}

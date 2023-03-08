@@ -11,10 +11,49 @@
          <result>/index.html</result>
       </action>
    
-      <action name = "hello"  class="br.com.empresa.projeto.action.HelloAction">
-         <result name = "success">/results.jsp</result>
-         <result name = "error">/error.jsp</result>
+<!--       <action name = "hello"  class="br.com.empresa.projeto.action.HelloAction"> -->
+<!--          <result name = "success">/results.jsp</result> -->
+<!--          <result name = "error">/error.jsp</result> -->
+<!--       </action> -->
+
+	<!-- exame actions -->
+
+      <action name = "exames"  class="br.com.empresa.projeto.action.exame.ListaExamesAction">
+         <result name = "success">/exame/home.jsp</result>
       </action>
+      
+      <action name = "deletaExame"  class="br.com.empresa.projeto.action.exame.DeletaExameAction">
+	         <result type="redirectAction" name = "success">
+	         	<param name="actionName ">exames</param>
+	         </result>
+      </action>
+      
+      <action name = "selecionaExame"  class="br.com.empresa.projeto.action.exame.SelecionaExameAction">
+		<result name = "success">/exame/editaExame.jsp</result>
+      </action>
+      
+      <action name = "editaExame"  class="br.com.empresa.projeto.action.exame.EditaExameAction">
+	         <result type="redirectAction" name = "success">
+	         	<param name="actionName ">exames</param>
+	         </result>
+      </action>
+            
+      <action name = "criaExame"  class="br.com.empresa.projeto.action.exame.CriaExameAction">
+		<result name = "success">/exame/criaExame.jsp</result>
+      </action>
+      
+      <action name = "adicionaExame"  class="br.com.empresa.projeto.action.exame.AdicionaExameAction">
+	         <result type="redirectAction" name = "success">
+	         	<param name="actionName ">exames</param>
+	         </result>
+      </action>
+      
+      <!-- funcionário actions -->
+      
+       <action name = "funcionarios"  class="br.com.empresa.projeto.action.funcionario.ListaFuncionariosAction">
+         <result name = "success">/funcionario/home.jsp</result>
+      </action>
+      
       
    </package>
 </struts>

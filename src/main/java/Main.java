@@ -20,8 +20,14 @@ public class Main {
 			exameBusiness.getAll().forEach(System.out::println);
 			System.out.println("\nexclusão realizada com sucesso\n");
 			exame.setId(8);
+			int c = 0;
 			//exameBusiness.update(exame);
-			exameBusiness.delete(exame);
+			//exameBusiness.delete(exame);
+			while(c  < 5) {
+				exameBusiness.insert(exame);
+				c++;
+			}
+			
 			exameBusiness.getAll().forEach(System.out::println);
 			
 			//testando crud funcionario
@@ -32,8 +38,8 @@ public class Main {
 			//fbusiness.delete(f);
 			f.setId(3);
 			f2.setId(1);
-			fbusiness.update(f);
-			fbusiness.update(f2);
+			//fbusiness.update(f);
+			//fbusiness.update(f2);
 			fbusiness.getAll().forEach(e -> System.out.println(e));
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

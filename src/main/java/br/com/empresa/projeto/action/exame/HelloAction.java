@@ -1,4 +1,4 @@
-package br.com.empresa.projeto.action;
+package br.com.empresa.projeto.action.exame;
 
 import org.apache.struts2.convention.annotation.Action;
 
