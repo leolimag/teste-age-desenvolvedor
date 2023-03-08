@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Funcionários</title>
 <script type="text/javascript" src="script/confirm.js"></script>
 </head>
 <body>
 	<header>
-	<a href="exames">Exames</a> <a href="funcionariosExames">Exames dos Funcionários</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> 
+	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> <a href="funcionariosExames">Exames dos Funcionários</a>
 	</header>
 	<h1>Funcionários</h1>
 	<a href="criaFuncionario">Adicionar Funcionário</a>

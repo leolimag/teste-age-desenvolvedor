@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Exames dos Funcionários</title>
 <script type="text/javascript" src="script/confirm.js"></script>
 </head>
 <body>
@@ -17,7 +17,6 @@
 	<a href="criaExame">Adicionar Exame</a>
 	<br>
 	<div>
-<%-- 		<c:property value="exames"/> --%>
 		<s:forEach items="${exames}" var="exame">
 			<p>${exame.descricao}<a href="selecionaExame?id=${exame.id }"> Editar </a> <a onclick="confirmadorExame(${exame.id })" href="#"> Deletar </a> </p> 
 		</s:forEach>
