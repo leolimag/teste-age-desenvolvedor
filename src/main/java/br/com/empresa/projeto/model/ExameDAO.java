@@ -20,6 +20,9 @@ public class ExameDAO {
 	}
 	
 	public void insert(Exame exame) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("insert into exames (descricao, data) values (?, ?) ")){
 			ps.setString(1, exame.getDescricao());
@@ -34,6 +37,9 @@ public class ExameDAO {
 	}
 	
 	public List<Exame> findAll() throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		List<Exame> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exames")){
@@ -55,6 +61,9 @@ public class ExameDAO {
 	}
 	
 	public Exame findById(Integer id) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		Exame exame = null;
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exames where id = ?")){
@@ -76,6 +85,9 @@ public class ExameDAO {
 	}
 	
 	public void update(Exame exame) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try(PreparedStatement ps = this.con.prepareStatement("update exames set descricao = ?, data = ? where id = ?")) {
 			ps.setString(1, exame.getDescricao());
@@ -88,7 +100,11 @@ public class ExameDAO {
 			System.out.println(e.getMessage());
 		}
 	}
+	
 	public void delete(Exame exame) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try(PreparedStatement ps = this.con.prepareStatement("delete from exames where id = ?")) {
 			ps.setInt(1, exame.getId());

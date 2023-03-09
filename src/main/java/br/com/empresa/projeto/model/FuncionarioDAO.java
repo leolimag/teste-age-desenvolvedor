@@ -20,6 +20,9 @@ public class FuncionarioDAO {
 	}
 	
 	public void insert(Funcionario funcionario) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("insert into funcionarios (nome) values (?) ")){
 			ps.setString(1, funcionario.getNome());
@@ -32,6 +35,9 @@ public class FuncionarioDAO {
 		
 	}
 	public List<Funcionario> findAll() throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		List<Funcionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from funcionarios")){
@@ -53,6 +59,9 @@ public class FuncionarioDAO {
 	}
 	
 	public Funcionario findById(Integer id) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		Funcionario funcionario = null;
 		try (PreparedStatement ps = this.con.prepareStatement("select * from funcionarios where id = ?")){
@@ -74,6 +83,9 @@ public class FuncionarioDAO {
 	}
 	
 	public void update(Funcionario funcionario) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try(PreparedStatement ps = this.con.prepareStatement("update funcionarios set nome = ? where id = ?")) {
 			ps.setString(1, funcionario.getNome());
@@ -86,6 +98,9 @@ public class FuncionarioDAO {
 		}
 	}
 	public void delete(Funcionario funcionario) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
 		this.con.setAutoCommit(false);
 		try(PreparedStatement ps = this.con.prepareStatement("delete from funcionarios where id = ?")) {
 			ps.setInt(1, funcionario.getId());

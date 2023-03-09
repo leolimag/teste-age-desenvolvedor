@@ -22,7 +22,7 @@
          <result name = "success">/exame/home.jsp</result>
       </action>
 
-      <action name = "examesFuncionarios"  class="br.com.empresa.projeto.action.exame.ListaExamesFuncionariosAction">
+      <action name = "examesFuncionarios"  class="br.com.empresa.projeto.action.exame.ListaExamesFuncionariosAction" >
          <result name = "success">/exame/exames.jsp</result>
       </action>
       
@@ -82,6 +82,18 @@
 	      <result type="redirectAction" name = "success">
 	       	<param name="actionName ">funcionarios</param>
 	      </result>
+      </action>
+      
+      <!-- exames e funcionários actions -->
+      
+      <action name = "listaExamesFuncionarios"  class="br.com.empresa.projeto.action.examefuncionario.ListaExamesFuncionariosRegistroAction" >
+         <result name = "success">/registraexame.jsp</result>
+      </action>
+      
+	  <action name = "registraExame"  class="br.com.empresa.projeto.action.examefuncionario.RegistraExameAction">
+         <result type="redirectAction" name = "success">
+         	<param name="actionName ">examesFuncionarios</param>
+         </result>
       </action>
       
    </package>

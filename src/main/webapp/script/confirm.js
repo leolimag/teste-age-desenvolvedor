@@ -1,3 +1,7 @@
+/**
+ *  Criando "confirms" para os inserts
+ */
+
 function confirmadorExame(id) {
 	let answer = confirm("Deseja realmente excluir este exame?");
 	if (answer === true) {

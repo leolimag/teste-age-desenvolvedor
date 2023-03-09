@@ -8,7 +8,7 @@
 <title>Criar Funcionário</title>
 </head>
 <body>
-			<form action="adicionaFuncionario">
+			<form action="adicionaFuncionario" method="post">
 				<div>
 					<label for="nome">nome</label>
 					<input type="text" name="nome" id="nome" required>	

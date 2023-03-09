@@ -1,0 +1,30 @@
+/**
+ *  Validando a data
+ */
+
+function register() {
+	const date = new Date();
+	const dateForm = document.getElementById("data").valueAsDate;
+
+	day = date.getDate();
+	month = date.getMonth() + 1;
+	year = date.getFullYear();
+
+	let dayForm = dateForm.getUTCDate();
+	let monthForm = dateForm.getUTCMonth() + 1; 
+	let yearForm = dateForm.getUTCFullYear();
+
+	if (yearForm < year){
+		document.getElementById("form").submit();
+	} else if(yearForm > year ){
+		alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
+		registry.data.focus();
+		return false;
+	} else if ((monthForm > month) || (monthForm == month && dayForm > day)){
+		alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
+		registry.data.focus();
+		return false;
+	}
+	
+}
+

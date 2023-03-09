@@ -9,7 +9,7 @@
 </head>
 <body>
 <%-- 			<c:property value="exame"/> do id <c:property value="id"/> --%>
-			<form action="adicionaExame">
+			<form action="adicionaExame" method="post">
 				<div>
 					<label for="descricao">Descrição</label>
 					<input type="text" name="descricao" id="descricao" required>	
