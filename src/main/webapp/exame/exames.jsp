@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Exames dos Funcionários</title>
-<script type="text/javascript" src="script/confirm.js"></script>
+<script src="script/confirm.js"></script>
 </head>
 <body>
 	<header>
@@ -17,7 +17,7 @@
 	<a href="listaExamesFuncionarios">Registrar Exame</a>
 	<div>
 		<s:forEach items="${exameFuncionarios}" var="exame">
-			<p> ${exame.nomeFuncionario} - ${exame.data}<a href="selecionaExame?id=${exame.idExame }"> Editar </a> <a onclick="confirmadorExame(${exame.idExame })" href="#"> Deletar </a> </p> 
+			<p> ${exame.nomeFuncionario} - ${exame.data}<a href=""> Editar </a> <a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')" href="#"> Deletar </a> </p> 
 		</s:forEach>
 	</div>
 </body>

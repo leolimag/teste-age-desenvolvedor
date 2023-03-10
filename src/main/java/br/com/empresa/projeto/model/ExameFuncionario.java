@@ -13,6 +13,12 @@ public class ExameFuncionario {
 	public ExameFuncionario() {
 	}
 	
+	public ExameFuncionario(Integer idExame, Integer idFuncionario, LocalDate data) {
+		this.idExame = idExame;
+		this.idFuncionario = idFuncionario;
+		this.data = data;
+	}
+	
 	public ExameFuncionario(Integer idExame, Integer idFuncionario, LocalDate data, String nomeFuncionario, String descricao) {
 		this.idExame = idExame;
 		this.idFuncionario = idFuncionario;

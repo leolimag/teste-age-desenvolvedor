@@ -96,5 +96,11 @@
          </result>
       </action>
       
+      <action name = "deletaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.DeletaRegistroAction">
+        <result type="redirectAction" name = "success">
+        	<param name="actionName ">examesFuncionarios</param>
+        </result>
+      </action>
+      
    </package>
 </struts>
