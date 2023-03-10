@@ -10,7 +10,7 @@ function confirmadorExame(id) {
 }
 
 function confirmadorFuncionario(id) {
-	let answer = confirm("Deseja realmente excluir este funcionário?");
+	let answer = confirm("Deseja realmente excluir este funcionário? Ao exclui-lo, também serão excluídos os exames realizados deste funcionário.");
 	if (answer === true) {
 		window.location.href = "deletaFuncionario?id=" + id;
 	}

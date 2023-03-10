@@ -3,8 +3,10 @@ package br.com.empresa.projeto.business;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.empresa.projeto.exception.DeletaExameException;
 import br.com.empresa.projeto.model.Exame;
 import br.com.empresa.projeto.model.ExameDAO;
+import br.com.empresa.projeto.model.ExameFuncionario;
 
 public class ExameBusiness {
 	
@@ -31,6 +33,13 @@ public class ExameBusiness {
 	}
 	
 	public void delete(Exame exame) throws SQLException {
+		ExameFuncionarioBusiness business =  new ExameFuncionarioBusiness();
+		List<ExameFuncionario> examefuncionarios = business.getAll();
+		examefuncionarios.forEach(ef -> {
+			if(ef.getIdExame() == exame.getId()) {
+				throw new DeletaExameException("Não é possível apagar este exame, pois já foi realizado por um funcionário.");
+			}
+		});
 		this.dao.delete(exame);
 	}
 

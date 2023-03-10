@@ -1,13 +1,14 @@
+<%@ taglib prefix="s"  uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="s"  uri="/struts-tags" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Página de erro</title>
 </head>
 <body>
-	Sadness <s:property value="name"/>
+	<h4><s:property value="mensagem"></s:property></h4>
+	<a href="exames">Voltar</a>
 </body>
 </html>

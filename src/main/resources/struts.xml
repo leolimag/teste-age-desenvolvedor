@@ -27,9 +27,11 @@
       </action>
       
       <action name = "deletaExame"  class="br.com.empresa.projeto.action.exame.DeletaExameAction">
+      		<exception-mapping exception="br.com.empresa.projeto.exception.DeletaExameException" result="error" />
 	         <result type="redirectAction" name = "success">
 	         	<param name="actionName ">exames</param>
 	         </result>
+	         <result name="error">/exame/error.jsp</result>
       </action>
       
       <action name = "selecionaExame"  class="br.com.empresa.projeto.action.exame.SelecionaExameAction">
