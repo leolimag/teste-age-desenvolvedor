@@ -11,16 +11,18 @@ import br.com.empresa.projeto.model.ExameFuncionario;
 @Action("editaRegistro")
 public class EditaRegistroAction {
 	
+	private ExameFuncionario exameFuncionario = new ExameFuncionario();
+	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
 	private Integer idExame;
 	private Integer idFuncionario;
 	private String data;
-	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
+	private String dataAntiga;
 
 	public String execute() throws SQLException {
-		ExameFuncionario exameFuncionario = business.getById(idExame, idFuncionario, formatData());
-		System.out.println(exameFuncionario.getIdExame());
-		System.out.println(exameFuncionario.getIdFuncionario());
-		System.out.println(exameFuncionario.getData());
+		exameFuncionario.setIdExame(idExame);
+		exameFuncionario.setIdFuncionario(idFuncionario);
+		exameFuncionario.setData(formatData(data));
+		business.update(exameFuncionario, getDataAntiga());
 		return "success";
 	}
 
@@ -48,8 +50,24 @@ public class EditaRegistroAction {
 		this.data = data;
 	}
 	
-	public LocalDate formatData() {
-		LocalDate dataNova = LocalDate.parse(this.data);
+	public ExameFuncionario getExameFuncionario() {
+		return exameFuncionario;
+	}
+
+	public void setExameFuncionario(ExameFuncionario exameFuncionario) {
+		this.exameFuncionario = exameFuncionario;
+	}
+	
+	public LocalDate getDataAntiga() {
+		return formatData(dataAntiga);
+	}
+
+	public void setDataAntiga(String dataAntiga) {
+		this.dataAntiga = dataAntiga;
+	}
+
+	public LocalDate formatData(String data) {
+		LocalDate dataNova = LocalDate.parse(data);
 		return dataNova;
 	}
 	

@@ -93,22 +93,23 @@ public class ExameFuncionarioDAO {
 		
 	}
 	
-//	public void update(ExameFuncionario exameFuncionario) throws SQLException {
-//		if (this.con.isClosed()) {
-//			this.con = connectionFactory.getConnection();
-//		}
-//		this.con.setAutoCommit(false);
-//		try(PreparedStatement ps = this.con.prepareStatement("update exame_funcionario set data = ?  where id_exame = ?, id_funcionario = ?, data = ?")) {
-//			ps.setString(1, exameFuncionario.getDescricao());
-//			ps.setString(2, exameFuncionario.getData());
-//			ps.setInt(3, exameFuncionario.getId());
-//			ps.execute();
-//			this.con.commit();
-//			this.con.close();
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//	}
+	public void update(ExameFuncionario exameFuncionario, LocalDate dataAntiga) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		this.con.setAutoCommit(false);
+		try(PreparedStatement ps = this.con.prepareStatement("update exame_funcionario set data = ?  where id_exame = ? and id_funcionario = ? and data = ?")) {
+			ps.setDate(1, Date.valueOf(exameFuncionario.getData()));
+			ps.setInt(2, exameFuncionario.getIdExame());
+			ps.setInt(3, exameFuncionario.getIdFuncionario());
+			ps.setDate(4, Date.valueOf(dataAntiga));
+			ps.execute();
+			this.con.commit();
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 	
 	public void delete(ExameFuncionario exameFuncionario) throws SQLException {
 		if (this.con.isClosed()) {

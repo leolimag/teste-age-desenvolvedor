@@ -24,6 +24,9 @@
 					<label for="data">Data</label>
 					<input type="date" name="data" id="data" value="${data}"  required>		
 				</div>
+				
+				<input hidden type="text" name="dataAntiga" value="${data}"  required>		
+				
 				<br>
 				<div>
 					<input type="submit" value="Atualizar" onclick="register()">

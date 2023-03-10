@@ -27,9 +27,9 @@ public class ExameFuncionarioBusiness {
 			this.dao.insert(exameFuncionario);
 		}
 		
-//		public void update(ExameFuncionario exameFuncionario) throws SQLException {
-//			this.dao.update(exameFuncionario);
-//		}
+		public void update(ExameFuncionario exameFuncionario, LocalDate dataAntiga) throws SQLException {
+			this.dao.update(exameFuncionario, dataAntiga);
+		}
 		
 		public void delete(ExameFuncionario exameFuncionario) throws SQLException {
 			this.dao.delete(exameFuncionario);
