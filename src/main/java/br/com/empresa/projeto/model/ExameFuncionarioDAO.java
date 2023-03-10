@@ -47,6 +47,33 @@ public class ExameFuncionarioDAO {
 		return list;
 	}
 	
+	public ExameFuncionario findById(Integer idExame, Integer idFuncionario, LocalDate data) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		this.con.setAutoCommit(false);
+		ExameFuncionario exameFuncionario = null;
+		try (PreparedStatement ps = this.con.prepareStatement("select * from exame_funcionario where id_exame = ? and id_funcionario = ? and data = ?")) {
+			ps.setInt(1, idExame);
+			ps.setInt(2, idFuncionario);
+			ps.setDate(3, Date.valueOf(data));
+			ps.execute();
+			this.con.commit();
+			try(ResultSet result = ps.getResultSet()) {
+				while(result.next()) {
+					LocalDate date = result.getDate("data").toLocalDate();
+					exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), date);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return exameFuncionario;
+	}
+	
 	
 	public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 		if (this.con.isClosed()) {

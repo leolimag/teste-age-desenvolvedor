@@ -17,7 +17,7 @@
 	<a href="listaExamesFuncionarios">Registrar Exame</a>
 	<div>
 		<s:forEach items="${exameFuncionarios}" var="exame">
-			<p> ${exame.nomeFuncionario} - ${exame.data}<a href=""> Editar </a> <a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')" href="#"> Deletar </a> </p> 
+			<p> ${exame.nomeFuncionario} - ${exame.data}<a href="selecionaRegistro?idExame=${exame.idExame}&idFuncionario=${exame.idFuncionario}&data=${exame.data}"> Editar </a> <a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')" href="#"> Deletar </a> </p> 
 		</s:forEach>
 	</div>
 </body>

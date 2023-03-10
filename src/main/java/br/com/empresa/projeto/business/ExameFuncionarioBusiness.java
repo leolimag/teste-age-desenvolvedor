@@ -1,6 +1,7 @@
 package br.com.empresa.projeto.business;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.com.empresa.projeto.model.ExameFuncionario;
@@ -18,9 +19,9 @@ public class ExameFuncionarioBusiness {
 			return this.dao.findAll();
 		}
 		
-//		public ExameFuncionario getById(Integer id) throws SQLException{
-//			return this.dao.findById(id);
-//		}
+		public ExameFuncionario getById(Integer idExame, Integer idFuncionario, LocalDate data) throws SQLException{
+			return this.dao.findById(idExame, idFuncionario, data);
+		}
 		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 			this.dao.insert(exameFuncionario);

@@ -9,7 +9,7 @@
 </head>
 <body>
 <%-- 			<c:property value="exame"/> do id <c:property value="id"/> --%>
-			<form action="editaExame?id=${exame.id }">
+			<form action="editaExame">
 				<div>
 					<label for="id">Id</label>
 					<input type="text" name="id" id="id" value="${exame.id}" readonly>		

@@ -12,7 +12,7 @@
 <body>
 <h2>Registre o Exame de um Funcionário</h2>
 <br>
-<form method="post" action="registraExame" name="registry" id="form">
+<form action="registraExame" name="registry" id="form">
 	<div>
 		<label for="func">Qual funcionário realizou o exame?</label>
 		<select name="funcionario" id="func">

@@ -23,6 +23,5 @@ public class ListaExamesFuncionariosAction {
 	public List<ExameFuncionario> getExameFuncionarios() {
 		return exameFuncionarios;
 	}
-
 	
 }

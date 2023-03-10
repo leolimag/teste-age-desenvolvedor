@@ -102,5 +102,15 @@
         </result>
       </action>
       
+      <action name = "selecionaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.SelecionaRegistroAction">
+		<result name = "success">/edita.jsp</result>
+      </action>
+      
+     <action name = "editaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.EditaRegistroAction">
+        <result type="redirectAction" name = "success">
+        	<param name="actionName ">examesFuncionarios</param>
+        </result>
+      </action>
+      
    </package>
 </struts>

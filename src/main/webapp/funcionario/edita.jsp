@@ -8,7 +8,7 @@
 <title>Editar Funcionário</title>
 </head>
 <body>
-			<form action="editaFuncionario?id=${funcionario.id }">
+			<form action="editaFuncionario">
 				<div>
 					<label for="id">Id</label>
 					<input type="text" name="id" id="id" value="${funcionario.id}" readonly required>		
