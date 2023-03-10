@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+import br.com.empresa.projeto.exception.AdicionaExameException;
 import br.com.empresa.projeto.model.ExameFuncionario;
 import br.com.empresa.projeto.model.ExameFuncionarioDAO;
 
@@ -24,6 +25,12 @@ public class ExameFuncionarioBusiness {
 		}
 		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
+			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
+			exameFuncionarios.forEach(ef -> {
+				if(ef.getData().equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
+					throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
+				}
+			});;
 			this.dao.insert(exameFuncionario);
 		}
 		
