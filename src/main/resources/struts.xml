@@ -102,9 +102,11 @@
       </action>
       
      <action name = "editaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.EditaRegistroAction">
+     	<exception-mapping exception="br.com.empresa.projeto.exception.AdicionaExameException" result="error" />
         <result type="redirectAction" name = "success">
         	<param name="actionName ">examesFuncionarios</param>
         </result>
+        <result name="error">/erro.jsp</result>
       </action>
       
    </package>

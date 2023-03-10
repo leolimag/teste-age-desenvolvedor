@@ -35,6 +35,12 @@ public class ExameFuncionarioBusiness {
 		}
 		
 		public void update(ExameFuncionario exameFuncionario, LocalDate dataAntiga) throws SQLException {
+			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
+			exameFuncionarios.forEach(ef -> {
+				if(ef.getData().equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
+					throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
+				}
+			});;
 			this.dao.update(exameFuncionario, dataAntiga);
 		}
 		

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import org.apache.struts2.convention.annotation.Action;
 
 import br.com.empresa.projeto.business.ExameFuncionarioBusiness;
+import br.com.empresa.projeto.exception.AdicionaExameException;
 import br.com.empresa.projeto.model.ExameFuncionario;
 
 @Action("editaRegistro")
@@ -17,12 +18,18 @@ public class EditaRegistroAction {
 	private Integer idFuncionario;
 	private String data;
 	private String dataAntiga;
+	private String mensagem;
 
 	public String execute() throws SQLException {
 		exameFuncionario.setIdExame(idExame);
 		exameFuncionario.setIdFuncionario(idFuncionario);
 		exameFuncionario.setData(formatData(data));
-		business.update(exameFuncionario, getDataAntiga());
+		try {
+			business.update(exameFuncionario, getDataAntiga());
+		} catch (AdicionaExameException e) {
+			setMensagem(e.getMessage());
+			return "error";
+		}
 		return "success";
 	}
 
@@ -69,6 +76,14 @@ public class EditaRegistroAction {
 	public LocalDate formatData(String data) {
 		LocalDate dataNova = LocalDate.parse(data);
 		return dataNova;
+	}
+	
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
 	}
 	
 }

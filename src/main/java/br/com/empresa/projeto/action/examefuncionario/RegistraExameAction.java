@@ -69,6 +69,4 @@ public class RegistraExameAction {
 		this.mensagem = mensagem;
 	}
 	
-	
-	
 }
