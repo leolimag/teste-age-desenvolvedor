@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +34,9 @@ public class ExameFuncionarioDAO {
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
-					LocalDate data = result.getDate("data").toLocalDate();
-					ExameFuncionario exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), data, result.getString("nome"), result.getString("descricao"));
+					LocalDate date = result.getDate("data").toLocalDate();
+					String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+					ExameFuncionario exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), dateString, result.getString("nome"), result.getString("descricao"));
 					list.add(exameFuncionario);
 				}
 			} catch (Exception e) {
@@ -47,7 +49,7 @@ public class ExameFuncionarioDAO {
 		return list;
 	}
 	
-	public ExameFuncionario findById(Integer idExame, Integer idFuncionario, LocalDate data) throws SQLException {
+	public ExameFuncionario findById(Integer idExame, Integer idFuncionario, String data) throws SQLException {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
@@ -56,13 +58,14 @@ public class ExameFuncionarioDAO {
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exame_funcionario where id_exame = ? and id_funcionario = ? and data = ?")) {
 			ps.setInt(1, idExame);
 			ps.setInt(2, idFuncionario);
-			ps.setDate(3, Date.valueOf(data));
+			ps.setDate(3, Date.valueOf(data)); 
 			ps.execute();
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()) {
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
-					exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), date);
+					String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+					exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), dateString);
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -93,7 +96,8 @@ public class ExameFuncionarioDAO {
 		
 	}
 	
-	public void update(ExameFuncionario exameFuncionario, LocalDate dataAntiga) throws SQLException {
+	public void update(ExameFuncionario exameFuncionario, String dataAntiga) throws SQLException {
+		LocalDate date = toLocalDate(dataAntiga);
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
@@ -102,7 +106,7 @@ public class ExameFuncionarioDAO {
 			ps.setDate(1, Date.valueOf(exameFuncionario.getData()));
 			ps.setInt(2, exameFuncionario.getIdExame());
 			ps.setInt(3, exameFuncionario.getIdFuncionario());
-			ps.setDate(4, Date.valueOf(dataAntiga));
+			ps.setDate(4, Date.valueOf(date));
 			ps.execute();
 			this.con.commit();
 			this.con.close();
@@ -112,6 +116,7 @@ public class ExameFuncionarioDAO {
 	}
 	
 	public void delete(ExameFuncionario exameFuncionario) throws SQLException {
+		LocalDate date = toLocalDate(exameFuncionario.getData());
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
@@ -119,7 +124,7 @@ public class ExameFuncionarioDAO {
 		try(PreparedStatement ps = this.con.prepareStatement("delete from exame_funcionario where id_exame = ? and id_funcionario = ? and data = ?")) {
 			ps.setInt(1, exameFuncionario.getIdExame());
 			ps.setInt(2, exameFuncionario.getIdFuncionario());
-			ps.setDate(3, Date.valueOf(exameFuncionario.getData()));
+			ps.setDate(3, Date.valueOf(date));
 			ps.execute();
 			this.con.commit();
 			this.con.close();
@@ -128,6 +133,10 @@ public class ExameFuncionarioDAO {
 		}
 	}
 	
-	
+	private LocalDate toLocalDate(String data) {
+		String dataArray[] = data.split("/");
+		LocalDate date = LocalDate.of(Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[1]), Integer.parseInt(dataArray[0]));
+		return date;
+	}
 	
 }

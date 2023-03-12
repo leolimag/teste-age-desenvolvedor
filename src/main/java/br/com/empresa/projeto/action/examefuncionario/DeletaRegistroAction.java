@@ -1,7 +1,6 @@
 package br.com.empresa.projeto.action.examefuncionario;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import org.apache.struts2.convention.annotation.Action;
 
@@ -17,7 +16,7 @@ public class DeletaRegistroAction {
 	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
 	
 	public String execute() throws SQLException {
-		ExameFuncionario exameFuncionario = new ExameFuncionario(idExame, idFuncionario, formatData());
+		ExameFuncionario exameFuncionario = new ExameFuncionario(idExame, idFuncionario, data);
 		business.delete(exameFuncionario);
 		return "success";
 	}
@@ -44,11 +43,6 @@ public class DeletaRegistroAction {
 
 	public void setData(String data) {
 		this.data = data;
-	}
-	
-	public LocalDate formatData() {
-		LocalDate dataNova = LocalDate.parse(this.data);
-		return dataNova;
 	}
 	
 }

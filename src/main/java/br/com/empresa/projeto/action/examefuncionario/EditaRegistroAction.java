@@ -1,7 +1,6 @@
 package br.com.empresa.projeto.action.examefuncionario;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import org.apache.struts2.convention.annotation.Action;
 
@@ -23,7 +22,7 @@ public class EditaRegistroAction {
 	public String execute() throws SQLException {
 		exameFuncionario.setIdExame(idExame);
 		exameFuncionario.setIdFuncionario(idFuncionario);
-		exameFuncionario.setData(formatData(data));
+		exameFuncionario.setData(data);
 		try {
 			business.update(exameFuncionario, getDataAntiga());
 		} catch (AdicionaExameException e) {
@@ -65,19 +64,14 @@ public class EditaRegistroAction {
 		this.exameFuncionario = exameFuncionario;
 	}
 	
-	public LocalDate getDataAntiga() {
-		return formatData(dataAntiga);
+	public String getDataAntiga() {
+		return this.dataAntiga;
 	}
 
 	public void setDataAntiga(String dataAntiga) {
 		this.dataAntiga = dataAntiga;
 	}
 
-	public LocalDate formatData(String data) {
-		LocalDate dataNova = LocalDate.parse(data);
-		return dataNova;
-	}
-	
 	public String getMensagem() {
 		return mensagem;
 	}

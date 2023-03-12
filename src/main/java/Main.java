@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import br.com.empresa.projeto.connection.ConnectionFactory;
 import br.com.empresa.projeto.model.ExameFuncionarioDAO;
@@ -16,6 +17,10 @@ public class Main {
 			//dao.delete(e);
 			dao.findAll().forEach(System.out::println);
 //			System.out.println(data);
+			
+			LocalDate date = LocalDate.now();
+			String data = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			System.out.println(data);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}

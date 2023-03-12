@@ -1,7 +1,6 @@
 package br.com.empresa.projeto.business;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 import br.com.empresa.projeto.exception.AdicionaExameException;
@@ -20,7 +19,7 @@ public class ExameFuncionarioBusiness {
 			return this.dao.findAll();
 		}
 		
-		public ExameFuncionario getById(Integer idExame, Integer idFuncionario, LocalDate data) throws SQLException{
+		public ExameFuncionario getById(Integer idExame, Integer idFuncionario, String data) throws SQLException{
 			return this.dao.findById(idExame, idFuncionario, data);
 		}
 		
@@ -34,7 +33,7 @@ public class ExameFuncionarioBusiness {
 			this.dao.insert(exameFuncionario);
 		}
 		
-		public void update(ExameFuncionario exameFuncionario, LocalDate dataAntiga) throws SQLException {
+		public void update(ExameFuncionario exameFuncionario, String dataAntiga) throws SQLException {
 			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
 			exameFuncionarios.forEach(ef -> {
 				if(ef.getData().equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
