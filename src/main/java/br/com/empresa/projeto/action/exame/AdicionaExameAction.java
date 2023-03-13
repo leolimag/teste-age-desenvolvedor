@@ -12,12 +12,10 @@ public class AdicionaExameAction {
 	
 	private ExameBusiness business = new ExameBusiness();
 	private Exame exame = new Exame();
-	private String descricao;
-	private String data;
+	private String nome;
 	
 	public String execute() throws SQLException {
-		exame.setDescricao(descricao);
-		exame.setData(data);
+		exame.setNome(nome);
 		business.insert(exame);
 		return "success";
 	}	
@@ -30,20 +28,12 @@ public class AdicionaExameAction {
 		this.exame  = exame;
 	}
 	
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }

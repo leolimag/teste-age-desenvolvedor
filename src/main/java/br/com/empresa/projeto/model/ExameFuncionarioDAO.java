@@ -28,7 +28,7 @@ public class ExameFuncionarioDAO {
 		}
 		List<ExameFuncionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
-		try (PreparedStatement ps = this.con.prepareStatement("select f.id as id_funcionario, f.nome, e.descricao, e.id as id_exame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
+		try (PreparedStatement ps = this.con.prepareStatement("select f.id as id_funcionario, f.nome, e.nome as nomeExame, e.id as id_exame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
 				+ " inner join exames e where e.id = ef.id_exame")){
 			ps.execute();
 			this.con.commit();
@@ -36,7 +36,7 @@ public class ExameFuncionarioDAO {
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
 					String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-					ExameFuncionario exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), dateString, result.getString("nome"), result.getString("descricao"));
+					ExameFuncionario exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), dateString, result.getString("nome"), result.getString("nomeExame"));
 					list.add(exameFuncionario);
 				}
 			} catch (Exception e) {

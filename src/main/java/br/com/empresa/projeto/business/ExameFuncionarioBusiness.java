@@ -1,6 +1,7 @@
 package br.com.empresa.projeto.business;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.com.empresa.projeto.exception.AdicionaExameException;
@@ -26,17 +27,21 @@ public class ExameFuncionarioBusiness {
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
 			exameFuncionarios.forEach(ef -> {
-				if(ef.getData().equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
+				LocalDate date = toLocalDate(ef.getData());
+				String dateString = date.toString();
+				if(dateString.equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
 					throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
 				}
-			});;
+			});
 			this.dao.insert(exameFuncionario);
 		}
 		
 		public void update(ExameFuncionario exameFuncionario, String dataAntiga) throws SQLException {
 			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
 			exameFuncionarios.forEach(ef -> {
-				if(ef.getData().equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
+				LocalDate date = toLocalDate(ef.getData());
+				String dateString = date.toString();
+				if(dateString.equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
 					throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
 				}
 			});;
@@ -45,6 +50,12 @@ public class ExameFuncionarioBusiness {
 		
 		public void delete(ExameFuncionario exameFuncionario) throws SQLException {
 			this.dao.delete(exameFuncionario);
+		}
+		
+		private LocalDate toLocalDate(String data) {
+			String dataArray[] = data.split("/");
+			LocalDate date = LocalDate.of(Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[1]), Integer.parseInt(dataArray[0]));
+			return date;
 		}
 
 }

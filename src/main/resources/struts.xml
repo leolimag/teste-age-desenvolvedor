@@ -109,5 +109,17 @@
         <result name="error">/erro.jsp</result>
       </action>
       
+      <!-- relatórios -->
+      
+      <action name = "criarRelatorio"  class="br.com.empresa.projeto.action.relatorio.CriarRelatorioAction">
+         <result name = "success">/relatorio/relatorio.jsp</result>
+      </action>
+      
+      <action name = "gerarRelatorio"  class="br.com.empresa.projeto.action.relatorio.GerarRelatorioAction">
+         <result name = "html">/relatorio/relatorioweb.jsp</result>
+         <result name = "pdf"></result>
+         <result name = "excel"></result>
+      </action>
+      
    </package>
 </struts>

@@ -6,7 +6,7 @@ public class ExameFuncionario {
 	private Integer idFuncionario;
 	private String data;
 	private String nomeFuncionario;
-	private String descricao;
+	private String nomeExame;
 	
 	public ExameFuncionario() {
 	}
@@ -17,12 +17,12 @@ public class ExameFuncionario {
 		this.data = data;
 	}
 	
-	public ExameFuncionario(Integer idExame, Integer idFuncionario, String data, String nomeFuncionario, String descricao) {
+	public ExameFuncionario(Integer idExame, Integer idFuncionario, String data, String nomeFuncionario, String nomeExame) {
 		this.idExame = idExame;
 		this.idFuncionario = idFuncionario;
 		this.data = data;
 		this.nomeFuncionario = nomeFuncionario;
-		this.descricao = descricao;
+		this.nomeExame = nomeExame;
 	}
 	
 	public Integer getIdExame() {
@@ -57,18 +57,18 @@ public class ExameFuncionario {
 		this.nomeFuncionario = nomeFuncionario;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNomeExame() {
+		return nomeExame;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNomeExame(String nomeExame) {
+		this.nomeExame = nomeExame;
 	}
 	
 	@Override
 	public String toString() {
 		return "ExameFuncionario [idExame=" + idExame + ", idFuncionario=" + idFuncionario + ", data=" + data
-				+ ", nomeFuncionario=" + nomeFuncionario + ", descricao=" + descricao + "]";
+				+ ", nomeFuncionario=" + nomeFuncionario + ", nomeExame=" + nomeExame + "]";
 	}
 
 }

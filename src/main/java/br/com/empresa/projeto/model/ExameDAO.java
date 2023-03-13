@@ -24,9 +24,8 @@ public class ExameDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		this.con.setAutoCommit(false);
-		try (PreparedStatement ps = this.con.prepareStatement("insert into exames (descricao, data) values (?, ?) ")){
-			ps.setString(1, exame.getDescricao());
-			ps.setString(2, exame.getData());
+		try (PreparedStatement ps = this.con.prepareStatement("insert into exames (nome) values (?) ")){
+			ps.setString(1, exame.getNome());
 			ps.execute();
 			this.con.commit();
 			this.con.close();
@@ -47,7 +46,7 @@ public class ExameDAO {
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
-					Exame exame = new Exame(result.getInt("id"), result.getString("descricao"), result.getString("data"));
+					Exame exame = new Exame(result.getInt("id"), result.getString("nome"));
 					list.add(exame);
 				}
 			} catch (Exception e) {
@@ -72,7 +71,7 @@ public class ExameDAO {
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
-					exame = new Exame(result.getInt("id"), result.getString("descricao"), result.getString("data"));
+					exame = new Exame(result.getInt("id"), result.getString("nome"));
 				}
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -89,10 +88,9 @@ public class ExameDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		this.con.setAutoCommit(false);
-		try(PreparedStatement ps = this.con.prepareStatement("update exames set descricao = ?, data = ? where id = ?")) {
-			ps.setString(1, exame.getDescricao());
-			ps.setString(2, exame.getData());
-			ps.setInt(3, exame.getId());
+		try(PreparedStatement ps = this.con.prepareStatement("update exames set nome = ? where id = ?")) {
+			ps.setString(1, exame.getNome());
+			ps.setInt(2, exame.getId());
 			ps.execute();
 			this.con.commit();
 			this.con.close();

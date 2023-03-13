@@ -13,13 +13,11 @@ public class EditaExameAction {
 	private ExameBusiness business = new ExameBusiness();
 	private Exame exame = new Exame();
 	private Integer id;
-	private String descricao;
-	private String data;
+	private String nome;
 	
 	public String execute() throws SQLException {
 		exame.setId(id);
-		exame.setDescricao(descricao);
-		exame.setData(data);
+		exame.setNome(nome);
 		business.update(exame);
 		return "success";
 	}	
@@ -40,20 +38,12 @@ public class EditaExameAction {
 		this.id = id;
 	}
 	
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 }

@@ -3,32 +3,23 @@ package br.com.empresa.projeto.model;
 public class Exame {
 	
 	private Integer id;
-	private String descricao;
-	private String data;
+	private String nome;
 	
-	public Exame(Integer id, String descricao, String data) {
-		this.descricao = descricao;
-		this.data = data;
+	public Exame(Integer id, String nome) {
+		this.nome = nome;
 		this.id = id;
 	}
-	public Exame(String descricao, String data) {
-		this.descricao = descricao;
-		this.data = data;
+	public Exame(String nome) {
+		this.nome = nome;
 	}
 	public Exame() {
 		
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public String getData() {
-		return data;
-	}
-	public void setData(String data) {
-		this.data = data;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public Integer getId() {
 		return id;
@@ -38,7 +29,7 @@ public class Exame {
 	}
 	@Override
 	public String toString() {
-		return "Exame [id=" + id + ", descricao=" + descricao + ", data=" + data + "]";
+		return "Exame [id=" + id + ", nome=" + nome + "]";
 	}
 	
 }
