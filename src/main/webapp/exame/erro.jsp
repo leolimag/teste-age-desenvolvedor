@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Página de erro</title>
+<title>Página de Erro</title>
 </head>
 <body>
 	<h4><s:property value="mensagem"></s:property></h4>

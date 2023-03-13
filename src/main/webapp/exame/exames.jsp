@@ -10,14 +10,12 @@
 <script src="script/confirm.js"></script>
 </head>
 <body>
-	<header>
-	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> <a href="examesFuncionarios">Exames dos Funcionários</a>
-	</header>
+	<s:import url="/template/template.jsp"></s:import>
 	<h1>Exames dos Funcionários</h1>
 	<a href="listaExamesFuncionarios">Registrar Exame</a>
 	<div>
 		<s:forEach items="${exameFuncionarios}" var="exame">
-			<p> ${exame.nomeFuncionario} - ${exame.descricao} - ${exame.data}<a href="selecionaRegistro?idExame=${exame.idExame}&idFuncionario=${exame.idFuncionario}&data=${exame.data}"> Editar </a> <a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')" href="#"> Deletar </a> </p> 
+			<p> ${exame.nomeFuncionario} - ${exame.nomeExame} - ${exame.data}<a href="selecionaRegistro?idExame=${exame.idExame}&idFuncionario=${exame.idFuncionario}&data=${exame.data}"> Editar </a> <a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')" href="#"> Deletar </a> </p> 
 		</s:forEach>
 	</div>
 </body>

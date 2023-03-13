@@ -26,7 +26,7 @@
 		<label for="exam">Qual exame foi realizado?</label>
 		<select name="exame" id="exam">
 			<s:forEach items="${exames }" var="exame">
-				<option value="${exame.id }">${exame.descricao}</option>
+				<option value="${exame.id }">${exame.nome}</option>
 			</s:forEach>
 		</select>
 	</div>
@@ -35,9 +35,8 @@
 	<input type="date" name="data" id="data" required>
 	<br>
 	<br>
-	<input type="submit" value="Registrar" onclick="register()">
+	<input type="button" value="Registrar" onclick="register()">
 </form>
-
 
 
 </body>

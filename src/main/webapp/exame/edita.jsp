@@ -8,7 +8,6 @@
 <title>Editar Exame</title>
 </head>
 <body>
-<%-- 			<c:property value="exame"/> do id <c:property value="id"/> --%>
 			<form action="editaExame">
 				<div>
 					<label for="id">Id</label>
@@ -16,13 +15,8 @@
 				</div>
 				<br>
 				<div>
-					<label for="descricao">Descrição</label>
-					<input type="text" name="descricao" id="descricao" value="${exame.descricao}"  required>	
-				</div>
-				<br>
-				<div>
-					<label for="id">Data</label>
-					<input type="text" name="data" id="data" value="${exame.data}"  required>		
+					<label for="nome">Nome</label>
+					<input type="text" name="nome" id="nome" value="${exame.nome}"  required>	
 				</div>
 				<br>
 				<div>

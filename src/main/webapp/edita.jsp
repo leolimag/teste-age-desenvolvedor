@@ -29,7 +29,7 @@
 				
 				<br>
 				<div>
-					<input type="submit" value="Atualizar" onclick="register()">
+					<input type="button" value="Atualizar" onclick="register()">
 				</div>
 			</form>
 </body>

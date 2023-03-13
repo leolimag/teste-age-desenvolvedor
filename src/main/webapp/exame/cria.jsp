@@ -8,16 +8,10 @@
 <title>Criar Exame</title>
 </head>
 <body>
-<%-- 			<c:property value="exame"/> do id <c:property value="id"/> --%>
 			<form action="adicionaExame" method="post">
 				<div>
-					<label for="descricao">Descrição</label>
-					<input type="text" name="descricao" id="descricao" required>	
-				</div>
-				<br>
-				<div>
-					<label for="id">Data</label>
-					<input type="text" name="data" id="data" required>		
+					<label for="nome">Nome</label>
+					<input type="text" name="nome" id="nome" required>	
 				</div>
 				<br>
 				<div>

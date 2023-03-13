@@ -10,9 +10,7 @@
 <script type="text/javascript" src="script/confirm.js"></script>
 </head>
 <body>
-	<header>
-	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> <a href="examesFuncionarios">Exames dos Funcionários</a>
-	</header>
+	<s:import url="/template/template.jsp"></s:import>
 	<h1>Funcionários</h1>
 	<a href="criaFuncionario">Adicionar Funcionário</a>
 	<br>
