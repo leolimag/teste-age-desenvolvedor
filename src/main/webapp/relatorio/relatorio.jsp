@@ -17,14 +17,13 @@
 		<br>
 		<br>
 		<div>
-			Ano inicial: <input type="text" name="anoInicial" id="anoInicial" maxlength="4" placeholder="Ex: 2020" >
-			Ano final: <input type="text" name="anoFinal" id="anoFinal" maxlength="4" placeholder="Ex: 2023" >
+			Ano inicial: <input type="text" name="anoInicial" id="anoInicial" maxlength="4" value="0" >
+			Ano final: <input type="text" name="anoFinal" id="anoFinal" maxlength="4" value="0">
 		</div>
 		<br>
 		<div>
 			<input type="button" value="Gerar Relatório" onclick="report()">
 				<select name="tipo" id="relatorio">
-				<option selected>Escolha um Formato</option>
 				<option value="pdf">PDF</option>
 				<option value="html">Página web (HTML)</option>
 				<option value="excel">Excel</option>

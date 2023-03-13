@@ -24,6 +24,13 @@ public class ExameFuncionarioBusiness {
 			return this.dao.findById(idExame, idFuncionario, data);
 		}
 		
+		public List<ExameFuncionario> getByData(String anoInicial, String anoFinal) throws SQLException{
+			if (anoFinal.equals("0")) {
+				return this.dao.findByDate(anoInicial, "2500");
+			}
+			return this.dao.findByDate(anoInicial, anoFinal);
+		}
+		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
 			exameFuncionarios.forEach(ef -> {

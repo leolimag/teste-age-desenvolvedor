@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 	<header>
-	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> <a href="examesFuncionarios">Exames dos Funcionários</a> <a href="criarRelatorio">Relatórios</a>
+	<a href="exames">Exames</a> <!-- <a href="">Meus Exames</a> --> <a href="funcionarios">Funcionários</a> <a href="examesFuncionarios">Exames dos Funcionários</a> <a href="relatorio">Relatórios</a>
 	</header>
 
 </html>

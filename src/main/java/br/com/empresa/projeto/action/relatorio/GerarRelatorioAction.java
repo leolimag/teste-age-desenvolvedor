@@ -15,9 +15,14 @@ public class GerarRelatorioAction {
 	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
 	private List<ExameFuncionario> exameFuncionarios = new ArrayList<>();
 	private String tipo;
+	private String anoInicial;
+	private String anoFinal;
 	
 	public String execute() throws SQLException {
-		exameFuncionarios.addAll(business.getAll());
+		exameFuncionarios.addAll(business.getByData(anoInicial, anoFinal));
+		if (exameFuncionarios.size() == 0) {
+			return "empty";
+		}
 		if (tipo.equals("pdf")) {
 			return "pdf";
 		} else if (tipo.equals("html")) {
@@ -42,6 +47,22 @@ public class GerarRelatorioAction {
 
 	public void setExameFuncionarios(List<ExameFuncionario> exameFuncionarios) {
 		this.exameFuncionarios = exameFuncionarios;
+	}
+
+	public String getAnoInicial() {
+		return anoInicial;
+	}
+
+	public void setAnoInicial(String anoInicial) {
+		this.anoInicial = anoInicial;
+	}
+
+	public String getAnoFinal() {
+		return anoFinal;
+	}
+
+	public void setAnoFinal(String anoFinal) {
+		this.anoFinal = anoFinal;
 	}
 	
 }

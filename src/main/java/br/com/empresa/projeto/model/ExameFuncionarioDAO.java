@@ -77,6 +77,34 @@ public class ExameFuncionarioDAO {
 		return exameFuncionario;
 	}
 	
+	public List<ExameFuncionario> findByDate(String anoInicial, String anoFinal) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		List<ExameFuncionario> list = new ArrayList<>();
+		this.con.setAutoCommit(false);
+		try (PreparedStatement ps = this.con.prepareStatement("select f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
+				+ " inner join exames e where e.id = ef.id_exame and year(ef.data) >= ? and year(ef.data) <= ?")){
+			ps.setInt(1, Integer.parseInt(anoInicial));
+			ps.setInt(2, Integer.parseInt(anoFinal));
+			ps.execute();
+			this.con.commit();
+			try(ResultSet result = ps.getResultSet()){
+				while(result.next()) {
+					LocalDate date = result.getDate("data").toLocalDate();
+					String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+					ExameFuncionario exameFuncionario = new ExameFuncionario(dateString, result.getString("nome"), result.getString("nomeExame"));
+					list.add(exameFuncionario);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
+	}
 	
 	public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 		if (this.con.isClosed()) {
@@ -138,5 +166,5 @@ public class ExameFuncionarioDAO {
 		LocalDate date = LocalDate.of(Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[1]), Integer.parseInt(dataArray[0]));
 		return date;
 	}
-	
+
 }

@@ -25,6 +25,12 @@ public class ExameFuncionario {
 		this.nomeExame = nomeExame;
 	}
 	
+	public ExameFuncionario(String data, String nomeFuncionario, String nomeExame) {
+		this.data = data;
+		this.nomeFuncionario = nomeFuncionario;
+		this.nomeExame = nomeExame;
+	}
+	
 	public Integer getIdExame() {
 		return idExame;
 	}

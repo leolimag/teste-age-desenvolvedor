@@ -25,5 +25,7 @@
 			</tbody>
 		</s:forEach>
 	</table>
+	<br>
+	<a href="relatorio">Voltar</a>
 </body>
 </html>
