@@ -10,24 +10,31 @@ function register() {
 	month = date.getMonth() + 1;
 	year = date.getFullYear();
 
-	let dayForm = dateForm.getUTCDate();
-	let monthForm = dateForm.getUTCMonth() + 1; 
-	let yearForm = dateForm.getUTCFullYear();
-	
-	if(yearForm > year ){
-		alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
-		registry.data.focus();
-		return false;
-	} else if (yearForm == year && monthForm > month){
-		alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
-		registry.data.focus();
-		return false;
-	} else if (monthForm == month && dayForm > day){
-		alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
-		registry.data.focus();
-		return false;
+	if (dateForm != null) {
+		var dayForm = dateForm.getUTCDate();
+		var monthForm = dateForm.getUTCMonth() + 1;
+		var yearForm = dateForm.getUTCFullYear();
+		if (yearForm > 2000) {
+			if (yearForm > year) {
+				alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
+				registry.data.focus();
+				return false;
+			} else if (yearForm == year && monthForm > month) {
+				alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
+				registry.data.focus();
+				return false;
+			} else if (monthForm == month && dayForm > day) {
+				alert("Data inválida. Insira uma data anterior ou correspondente ao dia de hoje.");
+				registry.data.focus();
+				return false;
+			} else {
+				document.forms['registry'].submit();
+			}
+		} else {
+			alert("Data inválida. Não é possível registrar datas anteriores ao ano 2000.")
+		}
 	} else {
-		document.forms['registry'].submit();
-	} 
-	
+		alert("Insira uma data.")
+	}
+
 }

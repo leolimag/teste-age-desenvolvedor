@@ -77,16 +77,16 @@ public class ExameFuncionarioDAO {
 		return exameFuncionario;
 	}
 	
-	public List<ExameFuncionario> findByDate(String anoInicial, String anoFinal) throws SQLException {
+	public List<ExameFuncionario> findByDate(String dataInicial, String dataFinal) throws SQLException {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
 		List<ExameFuncionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select e.id as id_exame, f.id as id_funcionario, f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
-				+ " inner join exames e where e.id = ef.id_exame and year(ef.data) >= ? and year(ef.data) <= ?")){
-			ps.setInt(1, Integer.parseInt(anoInicial));
-			ps.setInt(2, Integer.parseInt(anoFinal));
+				+ " inner join exames e where e.id = ef.id_exame and ef.data >= ? and ef.data <= ?")){
+			ps.setDate(1, Date.valueOf(dataInicial));
+			ps.setDate(2, Date.valueOf(dataFinal));
 			ps.execute();
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){

@@ -17,8 +17,8 @@
 		<br>
 		<br>
 		<div>
-			Ano inicial: <input type="text" name="anoInicial" id="anoInicial" maxlength="4" value="0" >
-			Ano final: <input type="text" name="anoFinal" id="anoFinal" maxlength="4" value="0">
+			Data inicial: <input type="date" name="dataInicial" id="dataInicial">
+			Data final: <input type="date" name="dataFinal"  id="dataFinal">
 		</div>
 		<br>
 		<div>

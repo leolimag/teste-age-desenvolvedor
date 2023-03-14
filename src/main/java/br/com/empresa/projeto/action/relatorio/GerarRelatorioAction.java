@@ -25,11 +25,11 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
 	private List<ExameFuncionario> exameFuncionarios = new ArrayList<>();
 	private String tipo;
-	private String anoInicial;
-	private String anoFinal;
+	private String dataInicial;
+	private String dataFinal;
 	
 	public String execute() throws SQLException, IOException {
-		exameFuncionarios.addAll(business.getByData(anoInicial, anoFinal));
+		exameFuncionarios.addAll(business.getByData(dataInicial, dataFinal));
 		
 		if (exameFuncionarios.size() == 0) {
 			return "empty";
@@ -61,22 +61,6 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 		this.exameFuncionarios = exameFuncionarios;
 	}
 
-	public String getAnoInicial() {
-		return anoInicial;
-	}
-
-	public void setAnoInicial(String anoInicial) {
-		this.anoInicial = anoInicial;
-	}
-
-	public String getAnoFinal() {
-		return anoFinal;
-	}
-
-	public void setAnoFinal(String anoFinal) {
-		this.anoFinal = anoFinal;
-	}
-
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
 		this.response = response;
@@ -95,6 +79,22 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 		return response;
 	}
 	
+	public String getDataInicial() {
+		return dataInicial;
+	}
+
+	public void setDataInicial(String dataInicial) {
+		this.dataInicial = dataInicial;
+	}
+
+	public String getDataFinal() {
+		return dataFinal;
+	}
+
+	public void setDataFinal(String dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+
 	private void generatePdf() throws SQLException {
 		RelatorioPDF pdf = new RelatorioPDF();
 		Document documento = new Document();
@@ -105,6 +105,5 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 		RelatorioExcel excel = new RelatorioExcel();
 		excel.generate(this.getServletResponse(), exameFuncionarios);
 	}
-
 	
 }

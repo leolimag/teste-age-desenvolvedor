@@ -24,11 +24,8 @@ public class ExameFuncionarioBusiness {
 			return this.dao.findById(idExame, idFuncionario, data);
 		}
 		
-		public List<ExameFuncionario> getByData(String anoInicial, String anoFinal) throws SQLException{
-			if (anoFinal.equals("0")) {
-				return this.dao.findByDate(anoInicial, "2500");
-			}
-			return this.dao.findByDate(anoInicial, anoFinal);
+		public List<ExameFuncionario> getByData(String dataInicial, String dataFinal) throws SQLException{
+			return this.dao.findByDate(dataInicial, dataFinal);
 		}
 		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
