@@ -116,9 +116,9 @@
       </action>
       
       <action name = "gerarRelatorio"  class="br.com.empresa.projeto.action.relatorio.GerarRelatorioAction">
+      	 <result name="pdf"></result>
+      	 <result name="excel"></result>
          <result name = "html">/relatorio/relatorioweb.jsp</result>
-         <result name = "pdf"></result>
-         <result name = "excel"></result>
          <result name = "empty">/relatorio/empty.html</result>
       </action>
       

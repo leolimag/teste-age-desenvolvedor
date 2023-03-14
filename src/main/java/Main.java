@@ -1,30 +1,80 @@
-import java.sql.Connection;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
-import br.com.empresa.projeto.connection.ConnectionFactory;
-import br.com.empresa.projeto.model.ExameFuncionarioDAO;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import br.com.empresa.projeto.business.ExameFuncionarioBusiness;
+import br.com.empresa.projeto.model.ExameFuncionario;
 
 public class Main {
 
-	public static void main(String[] args) {
-		try (Connection con = new ConnectionFactory().getConnection()){
-			ExameFuncionarioDAO dao = new ExameFuncionarioDAO();
-			LocalDate.now();
-			//ExameFuncionario e = new ExameFuncionario(14, 3, LocalDate.parse("2010-10-10"));
-			//dao.insert(e);
-			//dao.delete(e);
-			dao.findAll().forEach(System.out::println);
-//			System.out.println(data);
-			
-			LocalDate date = LocalDate.now();
-			String data = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-			System.out.println(data);
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+	public static void main(String[] args) throws IOException, SQLException {
+
+		String[] colunas = { "Funcionário", "Exame", "Data" };
+		List<ExameFuncionario> exameFuncionarios = new ArrayList<>();
+		ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
+
+		exameFuncionarios.addAll(business.getAll());
+		Workbook workbook = new XSSFWorkbook();
+		CreationHelper createHelper = workbook.getCreationHelper();
+		Sheet sheet = workbook.createSheet("Relatório");
+	
+		Font headerFont = workbook
+				.createFont();headerFont.setBold(true);headerFont.setFontHeightInPoints((short)14);headerFont.setColor(IndexedColors.RED.getIndex());
+	
+		CellStyle headerCellStyle = workbook.createCellStyle();headerCellStyle.setFont(headerFont);
+	
+		Row headerRow = sheet.createRow(0);
+	
+		for(
+		int i = 0;i<colunas.length;i++)
+		{
+			Cell cell = headerRow.createCell(i);
+			cell.setCellValue(colunas[i]);
+			cell.setCellStyle(headerCellStyle);
 		}
+	
+		CellStyle dateCellStyle = workbook
+				.createCellStyle();dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat("dd-MM-yyyy"));
+	
+		int rowNum = 1;for(
+		ExameFuncionario e:exameFuncionarios)
+		{
+			Row row = sheet.createRow(rowNum++);
+	
+			row.createCell(0).setCellValue(e.getNomeFuncionario());
+	
+			row.createCell(1).setCellValue(e.getNomeExame());
+	
+			Cell data = row.createCell(2);
+			data.setCellValue(e.getData());
+			data.setCellStyle(dateCellStyle);
+	
+			for (int i = 0; i < colunas.length; i++) {
+				sheet.autoSizeColumn(i);
+			}
+	
+			// Write the output to a file
+			FileOutputStream fileOut = new FileOutputStream("relatorio.xls");
+			workbook.write(fileOut);
+			fileOut.close();
+	
+			// Closing the workbook
+			workbook.close();
 
 	}
+
+}
 
 }
