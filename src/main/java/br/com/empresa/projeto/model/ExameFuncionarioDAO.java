@@ -83,7 +83,7 @@ public class ExameFuncionarioDAO {
 		}
 		List<ExameFuncionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
-		try (PreparedStatement ps = this.con.prepareStatement("select f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
+		try (PreparedStatement ps = this.con.prepareStatement("select e.id as id_exame, f.id as id_funcionario, f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
 				+ " inner join exames e where e.id = ef.id_exame and year(ef.data) >= ? and year(ef.data) <= ?")){
 			ps.setInt(1, Integer.parseInt(anoInicial));
 			ps.setInt(2, Integer.parseInt(anoFinal));
@@ -93,7 +93,7 @@ public class ExameFuncionarioDAO {
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
 					String dateString = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-					ExameFuncionario exameFuncionario = new ExameFuncionario(dateString, result.getString("nome"), result.getString("nomeExame"));
+					ExameFuncionario exameFuncionario = new ExameFuncionario(result.getInt("id_exame"), result.getInt("id_funcionario"), dateString, result.getString("nome"), result.getString("nomeExame"));
 					list.add(exameFuncionario);
 				}
 			} catch (Exception e) {

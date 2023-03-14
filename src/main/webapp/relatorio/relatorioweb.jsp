@@ -10,7 +10,9 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Id do Funcionário</th>
 				<th>Funcionário</th>
+				<th>Id do Exame</th>
 				<th>Exame</th>
 				<th>Data</th>
 			</tr>
@@ -18,7 +20,9 @@
 		<s:forEach items="${exameFuncionarios}" var="exame">
 			<tbody>
 				<tr>
+					<td>${exame.idFuncionario}</td>
 					<td>${exame.nomeFuncionario}</td>
+					<td>${exame.idExame}</td>
 					<td>${exame.nomeExame}</td>
 					<td>${exame.data}</td>
 				</tr>

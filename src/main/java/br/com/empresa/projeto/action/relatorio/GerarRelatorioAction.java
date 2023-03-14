@@ -103,7 +103,7 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 
 	private void generateExcel() throws SQLException, IOException {
 		RelatorioExcel excel = new RelatorioExcel();
-		excel.generate(business);
+		excel.generate(this.getServletResponse(), exameFuncionarios);
 	}
 
 	
