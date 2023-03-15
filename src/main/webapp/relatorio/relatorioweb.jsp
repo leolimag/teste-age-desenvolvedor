@@ -4,32 +4,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Relatório - HTML</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<h2>Relatório</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Id do Funcionário</th>
-				<th>Funcionário</th>
-				<th>Id do Exame</th>
-				<th>Exame</th>
-				<th>Data</th>
-			</tr>
-		</thead>
-		<s:forEach items="${exameFuncionarios}" var="exame">
-			<tbody>
+	<div class="div-table">
+		<table class="table-container">
+			<thead>
 				<tr>
-					<td>${exame.idFuncionario}</td>
-					<td>${exame.nomeFuncionario}</td>
-					<td>${exame.idExame}</td>
-					<td>${exame.nomeExame}</td>
-					<td>${exame.data}</td>
+					<th>Id do Funcionário</th>
+					<th>Funcionário</th>
+					<th>Id do Exame</th>
+					<th>Exame</th>
+					<th>Data</th>
 				</tr>
-			</tbody>
-		</s:forEach>
-	</table>
-	<br>
-	<a href="relatorio">Voltar</a>
+			</thead>
+			<s:forEach items="${exameFuncionarios}" var="exame">
+				<tbody>
+					<tr>
+						<td class="title-td">${exame.idFuncionario}</td>
+						<td class="title-td">${exame.nomeFuncionario}</td>
+						<td class="title-td">${exame.idExame}</td>
+						<td class="title-td">${exame.nomeExame}</td>
+						<td class="title-td">${exame.data}</td>
+					</tr>
+				</tbody>
+			</s:forEach>
+		</table>
+		<div class="back">
+			<a href="relatorio" class="btnBackRel">Voltar</a>
+		</div>
+	</div>
 </body>
 </html>
