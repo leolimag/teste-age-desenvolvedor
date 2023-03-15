@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+}
+
+.header-content {
+	padding: 20px;
+	background: #9dd4cf;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.header-content a {
+	font-size: 18px;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: 600;
+	font-family: monospace;
+}
+
+.header-content a:hover {
+	cursor: pointer;
+	color: black;
+}
+
+.add-btn {
+	background: #8dbeba;
+	color: white;
+	height: 22px;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	padding: 4px 14px;
+	display: flex;
+	align-items: center;
+	font-family: monospace;
+}
+
+.exam-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: auto 5%;
+}
+
+.exam-title  h1 {
+	color: #6d9490;
+	font-family: monospace;
+}
+
+.add-btn:hover {
+	background: #6d9490;
+	color: black;
+}
+
+.table-container {
+	margin: auto;
+	padding: 8px;
+	background: #d7edeb;
+	min-height: 340px;
+	min-width: 560px;
+}
+
+.title-td {
+	font-size: 18px;
+	font-family: monospace;
+	color: black;
+}
+
+.edit-btn {
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	color: white;
+	background: gray;
+	padding: 6px 18px;
+	border-radius: 8px;
+}
+
+.delete-btn {
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	color: white;
+	background: #d49da2;
+	padding: 6px 18px;
+	border-radius: 8px;
+}
