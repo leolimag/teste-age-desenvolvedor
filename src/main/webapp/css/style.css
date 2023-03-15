@@ -76,8 +76,16 @@ tr {
 	margin: auto;
 	padding: 8px;
 	background: #d7edeb;
-	min-height: 340px;
+	min-height: 180px;
 	min-width: 560px;
+}
+
+#table-container {
+	margin: auto;
+	padding: 8px;
+	background: #d7edeb;
+	min-width: 560px;
+	min-height: 10px;
 }
 
 .div-table {

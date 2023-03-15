@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="div-table">
-		<table class="table-container">
+		<table id="table-container">
 			<thead>
 				<tr>
 					<th>Id do Funcionário</th>
