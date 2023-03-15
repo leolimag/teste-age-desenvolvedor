@@ -12,28 +12,25 @@
 </head>
 <body>
 	<s:import url="/template/template.jsp"></s:import>
-	<div class="exam-title">
+	<div class="page-title">
 		<h1>Exames</h1>
 		<a href="criaExame" class="add-btn">Adicionar Exame</a>
 	</div>
+	<div class="div-table">
 		<table class="table-container">
 			<tbody>
 				<s:forEach items="${exames}" var="exame">
 					<tr>
-						<td class="title-td">
-							${exame.nome}
-						</td>
-						<td>
-							<a href="selecionaExame?id=${exame.id }" class="edit-btn">
-								Editar </a>
-						</td>
-						<td>
-						 <a onclick="confirmadorExame(${exame.id })" href="#" class="delete-btn">
-								Deletar </a>
-						</td>
+						<td class="title-td">${exame.nome}</td>
+						<td class="edit"><a href="selecionaExame?id=${exame.id }"
+							class="edit-btn"> Editar </a></td>
+						<td class="delete"><a
+							onclick="confirmadorExame(${exame.id })" href="#"
+							class="delete-btn"> Deletar </a></td>
 					</tr>
 				</s:forEach>
 			</tbody>
 		</table>
+	</div>
 </body>
 </html>

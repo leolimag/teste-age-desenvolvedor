@@ -1,36 +1,36 @@
-<%@ taglib prefix="c"  uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="/struts-tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
 <title>Editar Exame</title>
 <script src="script/register.js"></script>
 </head>
-<body>
-			<form action="editaRegistro" id="form" name="registry">
+<body class="forms">
+	<div class="content">
+		<form action="editaRegistro" id="form" name="registry">
+			<div class="border">
 				<div>
-					<label for="idExame">Id do Exame</label>
-					<input type="text" name="idExame" id="idExame" value="${idExame}" readonly>		
+					Id do Exame: <input type="text" name="idExame" class="input" id="idExame" value="${idExame}" readonly>
 				</div>
-				<br>
 				<div>
-					<label for="idFuncionario">Id do Funcionário</label>
-					<input type="text" name="idFuncionario" id="idFuncionario" value="${idFuncionario}"  readonly>	
+					Id do Funcionário: <input type="text" name="idFuncionario" class="input" id="idFuncionario" value="${idFuncionario}" readonly>
 				</div>
-				<br>
 				<div>
-					<label for="data">Data</label>
-					<input type="date" name="data" id="data" value="${data}"  required>		
+					Data: <input type="date" name="data" id="data" class="input" value="${data}" required>
 				</div>
-				
-				<input hidden type="text" name="dataAntiga" value="${data}"  required>		
-				
-				<br>
+				<input hidden type="text" name="dataAntiga" value="${data}" required>
 				<div>
-					<input type="button" value="Atualizar" onclick="register()">
+					<input type="button" value="Atualizar" class="btn" onclick="register()">
 				</div>
-			</form>
+			</div>
+		</form>
+	</div>
+	<div class="back">
+		<a href="examesFuncionarios" class="btnBack">Voltar</a>
+	</div>
 </body>
 </html>

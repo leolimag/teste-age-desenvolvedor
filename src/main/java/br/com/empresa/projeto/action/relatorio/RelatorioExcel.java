@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -20,14 +18,11 @@ import br.com.empresa.projeto.model.ExameFuncionario;
 
 public class RelatorioExcel {
 
-    private String[] columns = {"Id - Funcionário", "Funcionário", "Id - Exame", "Exame", "Data"};
-    
-    public void generate(HttpServletResponse response ,List<ExameFuncionario> exameFuncionarios) throws SQLException, IOException {
-    	
-		response.setContentType("text/xlsx");
-		response.addHeader("Content-Disposition", "attachment; filename=" + "relatorio.xlsx");
-    	
-		Workbook workbook = new XSSFWorkbook(); 
+	private String[] columns = { "Id - Funcionário", "Funcionário", "Id - Exame", "Exame", "Data" };
+
+	public void generate(List<ExameFuncionario> exameFuncionarios) throws SQLException, IOException {
+
+		Workbook workbook = new XSSFWorkbook();
 		CreationHelper createHelper = workbook.getCreationHelper();
 
 		Sheet sheet = workbook.createSheet("Relatório");
@@ -71,7 +66,6 @@ public class RelatorioExcel {
 		fileOut.close();
 
 		workbook.close();
-
-        }
+	}
 
 }

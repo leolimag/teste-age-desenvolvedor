@@ -1,7 +1,7 @@
-<%@ taglib prefix="s"  uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c"  uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="/struts-tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,14 +11,26 @@
 </head>
 <body>
 	<s:import url="/template/template.jsp"></s:import>
-	<h1>Funcionários</h1>
-	<a href="criaFuncionario">Adicionar Funcionário</a>
-	<br>
-	<div>
-<%-- 		<c:property value="exames"/> --%>
-		<s:forEach items="${funcionarios}" var="funcionario">
-			<p>${funcionario.nome}<a href="selecionaFuncionario?id=${funcionario.id }"> Editar </a> <a onclick="confirmadorFuncionario(${funcionario.id })" href="#"> Deletar </a></p> 
-		</s:forEach>
+	<div class="page-title">
+		<h1>Funcionários</h1>
+		<a href="criaFuncionario" class="add-btn">Adicionar Funcionário</a>
+	</div>
+	<div class="div-table">
+		<table class="table-container">
+			<tbody>
+				<s:forEach items="${funcionarios}" var="funcionario">
+					<tr>
+						<td class="title-td">${funcionario.nome}</td>
+						<td class="edit"><a
+							href="selecionaFuncionario?id=${funcionario.id }"
+							class="edit-btn-ef"> Editar </a></td>
+						<td class="delete"><a
+							onclick="confirmadorFuncionario(${funcionario.id })" href="#"
+							class="delete-btn"> Deletar </a></td>
+					</tr>
+				</s:forEach>
+			</tbody>
+		</table>
 	</div>
 </body>
 </html>

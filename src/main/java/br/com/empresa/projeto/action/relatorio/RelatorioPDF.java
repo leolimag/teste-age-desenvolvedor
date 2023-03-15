@@ -20,8 +20,6 @@ public class RelatorioPDF {
 			List<ExameFuncionario> exameFuncionarios) {
 		document = new Document();
 		try {
-			response.setContentType("application/pdf");
-			response.addHeader("Content-Disposition", "inline; filename=" + "relatorio.pdf");
 			PdfWriter.getInstance(document, response.getOutputStream());
 			document.open();
 

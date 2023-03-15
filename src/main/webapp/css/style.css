@@ -2,6 +2,7 @@
 
 body {
 	margin: 0;
+	padding-bottom: 20px;
 }
 
 .header-content {
@@ -25,6 +26,20 @@ body {
 	color: black;
 }
 
+tr {
+	padding-bottom: 10px;
+	padding-left: 13px;
+	padding-top: 7px;
+}
+
+.edit {
+	padding-left: 30px;
+}
+
+.delete {
+	padding: 10px;
+}
+
 .add-btn {
 	background: #8dbeba;
 	color: white;
@@ -32,22 +47,24 @@ body {
 	border-radius: 10px;
 	text-decoration: none;
 	font-weight: 600;
-	padding: 4px 14px;
+	padding: 16px 14px;
 	display: flex;
 	align-items: center;
 	font-family: monospace;
 }
 
-.exam-title {
+.page-title {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin: auto 5%;
+	padding-top: 15px;
 }
 
-.exam-title  h1 {
+.page-title  h1 {
 	color: #6d9490;
 	font-family: monospace;
+	font-size: 30px;
 }
 
 .add-btn:hover {
@@ -63,10 +80,21 @@ body {
 	min-width: 560px;
 }
 
+.div-table {
+	margin-top: 10px;
+}
+
+.theader {
+	text-align: left;
+}
+
 .title-td {
 	font-size: 18px;
 	font-family: monospace;
 	color: black;
+	padding-left: 10px;
+	padding-right: 12px;
+	padding-bottom: 0px;
 }
 
 .edit-btn {
@@ -79,6 +107,17 @@ body {
 	border-radius: 8px;
 }
 
+.edit-btn-ef {
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	color: white;
+	background: gray;
+	padding: 6px 18px;
+	margin-left: 214px;
+	border-radius: 8px;
+}
+
 .delete-btn {
 	text-decoration: none;
 	font-weight: 600;
@@ -87,4 +126,142 @@ body {
 	background: #d49da2;
 	padding: 6px 18px;
 	border-radius: 8px;
+}
+
+.delete-btn-ef {
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	color: white;
+	background: #d49da2;
+	padding: 6px 18px;
+	border-radius: 8px;
+	margin-left: 5px;
+	margin-right: 8px;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.border {
+	display: flex;
+	flex-direction: column;
+	border: 3px solid black;
+	padding: 64px;
+	background: #fdaab8;
+	border-radius: 12px;
+	width: 600px;
+	background: #6d9490;
+}
+
+.content {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 100px;
+	font-size: 20px;
+}
+
+.forms {
+	background: #d7edeb;
+}
+
+.btn {
+	height: 32px;
+	width: 120px;
+	border-radius: 8px;
+	background: black;
+	color: #fddde3;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 34px;
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+}
+
+.btn:hover {
+	transform: scale(1.1);
+	transition: all 0.5s;
+}
+
+.btnBack:hover {
+	transform: scale(1.1);
+	transition: all 0.5s;
+}
+
+.btnBack {
+	padding: 15px;
+	border-radius: 8px;
+	background: white;
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 34px;
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	text-align: center;
+}
+
+.btnGen {
+	padding: 16px;
+	border-radius: 8px;
+	background: #8dbeba;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	text-align: center;
+	border: none;
+}
+
+.btnGen:hover {
+	background: #6d9490;
+	color: black;
+}
+
+.back {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.input {
+	margin-top: 5px;
+	width: 250px;
+	height: 26px;
+	font-size: 18px;
+}
+
+.filter {
+	margin-top: 50px;
+	margin-left: 20px;
+}
+
+.filter-format {
+	margin-top: 15px;
+}
+
+h5 {
+	padding-top: 19px;
+	margin-left: 20px;
+}
+
+.h-error {
+	text-align: center;
+}
+
+.error {
+	margin-top: 100px;
+	background: #d49da2;
+	padding-top: 40px;
+	padding-bottom: 40px;
+	font-family: monospace;
 }

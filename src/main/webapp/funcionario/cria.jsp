@@ -1,22 +1,29 @@
-<%@ taglib prefix="c"  uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="/struts-tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="css/style.css">
 <title>Criar Funcionário</title>
 </head>
-<body>
-			<form action="adicionaFuncionario" method="post">
+<body class="forms">
+	<div class="content">
+		<form action="adicionaFuncionario" method="post" class="form">
+			<div class="border">
 				<div>
-					<label for="nome">nome</label>
-					<input type="text" name="nome" id="nome" required>	
+					Nome do Funcionário: <input type="text" name="nome" id="nome"
+						class="input" required>
 				</div>
-				<br>
 				<div>
-					<button type="submit">Criar</button>
+					<button type="submit" class="btn">Criar</button>
 				</div>
-			</form>
+			</div>
+		</form>
+	</div>
+	<div class="back">
+		<a href="funcionarios" class="btnBack">Voltar</a>
+	</div>
 </body>
 </html>

@@ -1,22 +1,28 @@
-<%@ taglib prefix="c"  uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="/struts-tags"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="css/style.css">
 <meta charset="UTF-8">
 <title>Criar Exame</title>
 </head>
-<body>
-			<form action="adicionaExame" method="post">
+<body class="forms">
+	<div class="content">
+		<form action="adicionaExame" method="post" class="form">
+			<div class="border">
 				<div>
-					<label for="nome">Nome</label>
-					<input type="text" name="nome" id="nome" required>	
+					Nome do Exame: <input type="text" name="nome" id="nome" class="input" required>
 				</div>
-				<br>
 				<div>
-					<button type="submit">Criar</button>
+					<button type="submit" class="btn">Criar</button>
 				</div>
-			</form>
+			</div>
+		</form>
+	</div>
+	<div class="back">
+		<a href="exames" class="btnBack">Voltar</a>
+	</div>
 </body>
 </html>
