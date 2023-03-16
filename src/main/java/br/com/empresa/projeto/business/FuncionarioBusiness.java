@@ -3,9 +3,9 @@ package br.com.empresa.projeto.business;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.empresa.projeto.dao.FuncionarioDAO;
 import br.com.empresa.projeto.model.ExameFuncionario;
 import br.com.empresa.projeto.model.Funcionario;
-import br.com.empresa.projeto.model.FuncionarioDAO;
 
 public class FuncionarioBusiness {
 	

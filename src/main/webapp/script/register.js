@@ -38,3 +38,15 @@ function register() {
 	}
 
 }
+
+function checkPassword(){
+	let password = document.getElementById("senha").value;
+	let confPassword = document.getElementById("senhaConfirmada").value;
+	if (password === confPassword){
+		document.forms['form'].submit();
+	} else {
+		alert("Confirmação de senha incorreta. Tente Novamente.");
+		form.senhaConfirmada.focus();
+		form.senhaConfirmada.value = "";
+	}
+}

@@ -3,9 +3,9 @@ package br.com.empresa.projeto.business;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.empresa.projeto.dao.ExameDAO;
 import br.com.empresa.projeto.exception.DeletaExameException;
 import br.com.empresa.projeto.model.Exame;
-import br.com.empresa.projeto.model.ExameDAO;
 import br.com.empresa.projeto.model.ExameFuncionario;
 
 public class ExameBusiness {

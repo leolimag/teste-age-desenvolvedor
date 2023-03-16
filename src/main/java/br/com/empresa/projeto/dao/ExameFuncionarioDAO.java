@@ -1,4 +1,4 @@
-package br.com.empresa.projeto.model;
+package br.com.empresa.projeto.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.empresa.projeto.connection.ConnectionFactory;
+import br.com.empresa.projeto.model.ExameFuncionario;
 
 public class ExameFuncionarioDAO {
 

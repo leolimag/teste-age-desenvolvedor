@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+import br.com.empresa.projeto.dao.ExameFuncionarioDAO;
 import br.com.empresa.projeto.exception.AdicionaExameException;
 import br.com.empresa.projeto.model.ExameFuncionario;
-import br.com.empresa.projeto.model.ExameFuncionarioDAO;
 
 public class ExameFuncionarioBusiness {
 		

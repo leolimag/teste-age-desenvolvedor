@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="script/register.js"></script>
 <title>Login</title>
 </head>
 <body class="forms">
@@ -16,13 +17,13 @@
 	      		E-mail: <input class="input" type="email" name="email" required>
 	      	</div>
 	      	<div>
-	      		Senha: <input class="input" type="password"  name="senha" required>
+	      		Senha: <input class="input" type="password"  name="senha" id="senha" required>
 	      	</div>
 	      	<div>
 	      		Confirme sua senha: <input class="input" type="password" id="senhaConfirmada" required>
 	      	</div>
 	          <div>
-	            <input class="btn" type="submit" value="Enviar">
+	            <input class="btn" type="button" value="Enviar" onclick="checkPassword()">
 	          </div>  
 	        </form>
 	    </div>

@@ -3,8 +3,8 @@ package br.com.empresa.projeto.business;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.empresa.projeto.dao.UsuarioDAO;
 import br.com.empresa.projeto.model.Usuario;
-import br.com.empresa.projeto.model.UsuarioDAO;
 
 public class UsuarioBusiness {
 	
