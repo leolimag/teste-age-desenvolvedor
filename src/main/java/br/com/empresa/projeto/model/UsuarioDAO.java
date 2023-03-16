@@ -42,5 +42,21 @@ public class UsuarioDAO {
 		}
 		return list;
 	}
+	
+	public void insert(Usuario usuario) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		this.con.setAutoCommit(false);
+		try (PreparedStatement ps = this.con.prepareStatement("insert into usuario (email, senha) values (?, ?) ")){
+			ps.setString(1, usuario.getEmail());
+			ps.setString(2, usuario.getSenha());
+			ps.execute();
+			this.con.commit();
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
 }

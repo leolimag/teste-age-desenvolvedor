@@ -27,4 +27,7 @@ public class UsuarioBusiness {
 		return null;
 	}
 
+	public void insert(Usuario usuario) throws SQLException {
+		this.dao.insert(usuario);
+	}
 }

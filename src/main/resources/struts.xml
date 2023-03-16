@@ -211,7 +211,7 @@
 			</result>
 		</action>
 
-		<!-- login -->
+		<!-- login e cadastro -->
 
 		<action name="entrar"
 			class="br.com.empresa.projeto.action.login.EntrarAction">
@@ -234,7 +234,10 @@
 				<param name="actionName">entrar</param>
 			</result>
 		</action>
-
+		
+		<action name="cadastro" class="br.com.empresa.projeto.action.login.CadastraAction">
+			<result name="success">/cadastro/cadastro.jsp</result>
+		</action>
 
 	</package>
 </struts>

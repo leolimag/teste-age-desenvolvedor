@@ -32,7 +32,6 @@ public class FuncionarioDAO {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
 	}
 	public List<Funcionario> findAll() throws SQLException {
 		if (this.con.isClosed()) {
