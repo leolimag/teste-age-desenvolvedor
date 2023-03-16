@@ -238,6 +238,12 @@
 		<action name="cadastro" class="br.com.empresa.projeto.action.login.CadastraAction">
 			<result name="success">/cadastro/cadastro.jsp</result>
 		</action>
+		
+		<action name="criaUsuario" class="br.com.empresa.projeto.action.usuario.CriaUsuarioAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">exames</param>
+			</result>
+		</action>
 
 	</package>
 </struts>

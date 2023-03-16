@@ -11,7 +11,7 @@
 	<div class="content">
 	    <div id="borderLogin">
 	    <h1 class="login">Cadastro</h1>
-	      <form class="form" name="form" action="login" method="post">
+	      <form class="form" name="form" action="criaUsuario" method="post">
 	      	<div>
 	      		E-mail: <input class="input" type="email" name="email" required>
 	      	</div>
@@ -19,7 +19,7 @@
 	      		Senha: <input class="input" type="password"  name="senha" required>
 	      	</div>
 	      	<div>
-	      		Confirme sua senha: <input class="input" type="password"  name="confsenha" required>
+	      		Confirme sua senha: <input class="input" type="password" id="senhaConfirmada" required>
 	      	</div>
 	          <div>
 	            <input class="btn" type="submit" value="Enviar">

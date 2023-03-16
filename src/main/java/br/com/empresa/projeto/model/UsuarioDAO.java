@@ -48,7 +48,7 @@ public class UsuarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		this.con.setAutoCommit(false);
-		try (PreparedStatement ps = this.con.prepareStatement("insert into usuario (email, senha) values (?, ?) ")){
+		try (PreparedStatement ps = this.con.prepareStatement("insert into usuarios (email, senha) values (?, ?) ")){
 			ps.setString(1, usuario.getEmail());
 			ps.setString(2, usuario.getSenha());
 			ps.execute();
