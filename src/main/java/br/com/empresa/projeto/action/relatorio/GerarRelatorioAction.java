@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -19,7 +20,7 @@ import br.com.empresa.projeto.model.ExameFuncionario;
 
 @Action("gerarRelatorio")
 public class GerarRelatorioAction implements ServletRequestAware, ServletResponseAware {
-	
+
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
@@ -27,24 +28,27 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 	private String tipo;
 	private String dataInicial;
 	private String dataFinal;
-	
+
 	public String execute() throws SQLException, IOException {
-		exameFuncionarios.addAll(business.getByData(dataInicial, dataFinal));
-		
-		if (exameFuncionarios.size() == 0) {
-			return "empty";
+		HttpSession session = request.getSession();
+		if (session.getAttribute("usuarioLogado") != null) {
+			exameFuncionarios.addAll(business.getByData(dataInicial, dataFinal));
+			if (exameFuncionarios.size() == 0) {
+				return "empty";
+			}
+			if (tipo.equals("pdf")) {
+				generatePdf();
+			} else if (tipo.equals("html")) {
+				return "html";
+			} else if (tipo.equals("excel")) {
+				generateExcel();
+			}
+			return "error";
+		} else {
+			return "failed";
 		}
-		
-		if (tipo.equals("pdf")) {
-			generatePdf();
-		} else if (tipo.equals("html")) {
-			return "html";
-		} else if (tipo.equals("excel")){
-			generateExcel();
-		}
-		return "error";
 	}
-	
+
 	public String getTipo() {
 		return tipo;
 	}
@@ -78,7 +82,7 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 	public HttpServletResponse getServletResponse() {
 		return response;
 	}
-	
+
 	public String getDataInicial() {
 		return dataInicial;
 	}
@@ -92,7 +96,7 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 	}
 
 	public void setDataFinal(String dataFinal) {
-		this.dataFinal = dataFinal;	
+		this.dataFinal = dataFinal;
 	}
 
 	private void generatePdf() throws SQLException {
@@ -104,12 +108,12 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 	}
 
 	private void generateExcel() throws SQLException, IOException {
-		RelatorioExcel excel = new RelatorioExcel();	
+		RelatorioExcel excel = new RelatorioExcel();
 		excel.generate(exameFuncionarios);
-		
+
 		response.setContentType("application/xlsx");
 		response.addHeader("Content-Disposition", "attachment; filename=relatorio.xlsx");
-		//response.getOutputStream();
+		// response.getOutputStream();
 	}
-	
+
 }

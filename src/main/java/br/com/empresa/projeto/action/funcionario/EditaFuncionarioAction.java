@@ -2,24 +2,37 @@ package br.com.empresa.projeto.action.funcionario;
 
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
 
 import br.com.empresa.projeto.business.FuncionarioBusiness;
 import br.com.empresa.projeto.model.Funcionario;
 
 @Action("editaFuncionario")
-public class EditaFuncionarioAction {
+public class EditaFuncionarioAction implements ServletRequestAware, ServletResponseAware {
 	
 	private FuncionarioBusiness business = new FuncionarioBusiness();
 	private Funcionario funcionario = new Funcionario();
 	private Integer id;
 	private String nome;
+	private HttpServletRequest request;
+	private HttpServletResponse response;
 	
 	public String execute() throws SQLException {
-		funcionario.setId(id);
-		funcionario.setNome(nome);
-		business.update(funcionario);
-		return "success";
+		HttpSession session = request.getSession();
+		if (session.getAttribute("usuarioLogado") != null) {
+			funcionario.setId(id);
+			funcionario.setNome(nome);
+			business.update(funcionario);
+			return "success";
+		} else {
+			return "failed";
+		}
 	}	
 	
 	public Funcionario getFuncionario() {
@@ -44,6 +57,24 @@ public class EditaFuncionarioAction {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	@Override
+	public void setServletResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
 	}
 
 }

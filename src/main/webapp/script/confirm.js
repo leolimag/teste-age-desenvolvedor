@@ -22,3 +22,10 @@ function confirmadorRegistro(idExame, idFuncionario, data) {
 		window.location.href = "deletaRegistro?idExame=" + idExame + "&idFuncionario=" + idFuncionario + "&data=" + data;
 	}	
 }
+
+function confirmarLogout(){
+	let answer = confirm("Deseja realmente sair do sistema?");
+	if (answer === true){
+		window.location.href = "logout";
+	}
+}

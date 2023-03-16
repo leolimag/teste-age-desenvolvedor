@@ -4,123 +4,237 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-   <constant name = "struts.devMode" value = "true" />
-   <package name = "projeto" extends = "struts-default">
-   
-	<!-- exame actions -->
+	<constant name="struts.devMode" value="true" />
+	<package name="projeto" extends="struts-default">
 
-      <action name = "exames"  class="br.com.empresa.projeto.action.exame.ListaExamesAction">
-         <result name = "success">/exame/home.jsp</result>
-      </action>
+		<!-- exame actions -->
 
-      <action name = "examesFuncionarios"  class="br.com.empresa.projeto.action.exame.ListaExamesFuncionariosAction" >
-         <result name = "success">/exame/exames.jsp</result>
-      </action>
-      
-      <action name = "deletaExame"  class="br.com.empresa.projeto.action.exame.DeletaExameAction">
-      		<exception-mapping exception="br.com.empresa.projeto.exception.DeletaExameException" result="error" />
-	         <result type="redirectAction" name = "success">
-	         	<param name="actionName ">exames</param>
-	         </result>
-	         <result name="error">/exame/erro.jsp</result>
-      </action>
-      
-      <action name = "selecionaExame"  class="br.com.empresa.projeto.action.exame.SelecionaExameAction">
-		<result name = "success">/exame/edita.jsp</result>
-      </action>
-      
-      <action name = "editaExame"  class="br.com.empresa.projeto.action.exame.EditaExameAction">
-	         <result type="redirectAction" name = "success">
-	         	<param name="actionName ">exames</param>
-	         </result>
-      </action>
-            
-      <action name = "criaExame"  class="br.com.empresa.projeto.action.exame.CriaExameAction">
-		<result name = "success">/exame/cria.jsp</result>
-      </action>
-      
-      <action name = "adicionaExame"  class="br.com.empresa.projeto.action.exame.AdicionaExameAction">
-	         <result type="redirectAction" name = "success">
-	         	<param name="actionName ">exames</param>
-	         </result>
-      </action>
-      
-      <!-- funcionário actions -->
-      
-       <action name = "funcionarios"  class="br.com.empresa.projeto.action.funcionario.ListaFuncionariosAction">
-         <result name = "success">/funcionario/home.jsp</result>
-      </action>
-      
-     <action name = "selecionaFuncionario"  class="br.com.empresa.projeto.action.funcionario.SelecionaFuncionarioAction">
-		<result name = "success">/funcionario/edita.jsp</result>
-      </action>
-      
-      <action name = "editaFuncionario"  class="br.com.empresa.projeto.action.funcionario.EditaFuncionarioAction">
-	      <result type="redirectAction" name = "success">
-	       	<param name="actionName ">funcionarios</param>
-	      </result>
-      </action>
-      
-      <action name = "criaFuncionario"  class="br.com.empresa.projeto.action.funcionario.CriaFuncionarioAction">
-		<result name = "success">/funcionario/cria.jsp</result>
-      </action>
-      
-      <action name = "adicionaFuncionario"  class="br.com.empresa.projeto.action.funcionario.AdicionaFuncionarioAction">
-	      <result type="redirectAction" name = "success">
-	       	<param name="actionName ">funcionarios</param>
-	      </result>
-      </action>
-      
-      <action name = "deletaFuncionario"  class="br.com.empresa.projeto.action.funcionario.DeletaFuncionarioAction">
-	      <result type="redirectAction" name = "success">
-	       	<param name="actionName ">funcionarios</param>
-	      </result>
-      </action>
-      
-      <!-- exames e funcionários actions -->
-      
-      <action name = "listaExamesFuncionarios"  class="br.com.empresa.projeto.action.examefuncionario.ListaExamesFuncionariosRegistroAction" >
-         <result name = "success">/registraexame.jsp</result>
-      </action>
-      
-	  <action name = "registraExame"  class="br.com.empresa.projeto.action.examefuncionario.RegistraExameAction">
-	  	<exception-mapping exception="br.com.empresa.projeto.exception.AdicionaExameException" result="error" />
-         <result type="redirectAction" name = "success">
-         	<param name="actionName ">examesFuncionarios</param>
-         </result>
-         <result name="error">/erro.jsp</result>
-      </action>
-      
-      <action name = "deletaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.DeletaRegistroAction">
-        <result type="redirectAction" name = "success">
-        	<param name="actionName ">examesFuncionarios</param>
-        </result>
-      </action>
-      
-      <action name = "selecionaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.SelecionaRegistroAction">
-		<result name = "success">/edita.jsp</result>
-      </action>
-      
-     <action name = "editaRegistro"  class="br.com.empresa.projeto.action.examefuncionario.EditaRegistroAction">
-     	<exception-mapping exception="br.com.empresa.projeto.exception.AdicionaExameException" result="error" />
-        <result type="redirectAction" name = "success">
-        	<param name="actionName ">examesFuncionarios</param>
-        </result>
-        <result name="error">/erro.jsp</result>
-      </action>
-      
-      <!-- relatórios -->
-      
-      <action name = "relatorio"  class="br.com.empresa.projeto.action.relatorio.CriarRelatorioAction">
-         <result name = "success">/relatorio/relatorio.jsp</result>
-      </action>
-      
-      <action name = "gerarRelatorio"  class="br.com.empresa.projeto.action.relatorio.GerarRelatorioAction">
-      	 <result name="pdf"></result>
-      	 <result name="excel"></result>
-         <result name = "html">/relatorio/relatorioweb.jsp</result>
-         <result name = "empty">/relatorio/empty.html</result>
-      </action>
-      
-   </package>
+		<action name="exames"
+			class="br.com.empresa.projeto.action.exame.ListaExamesAction">
+			<result name="success">/exame/home.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="examesFuncionarios"
+			class="br.com.empresa.projeto.action.exame.ListaExamesFuncionariosAction">
+			<result name="success">/exame/exames.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="deletaExame"
+			class="br.com.empresa.projeto.action.exame.DeletaExameAction">
+			<exception-mapping
+				exception="br.com.empresa.projeto.exception.DeletaExameException"
+				result="error" />
+			<result type="redirectAction" name="success">
+				<param name="actionName ">exames</param>
+			</result>
+			<result name="error">/exame/erro.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="selecionaExame"
+			class="br.com.empresa.projeto.action.exame.SelecionaExameAction">
+			<result name="success">/exame/edita.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="editaExame"
+			class="br.com.empresa.projeto.action.exame.EditaExameAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">exames</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="criaExame"
+			class="br.com.empresa.projeto.action.exame.CriaExameAction">
+			<result name="success">/exame/cria.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="adicionaExame"
+			class="br.com.empresa.projeto.action.exame.AdicionaExameAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">exames</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<!-- funcionário actions -->
+
+		<action name="funcionarios"
+			class="br.com.empresa.projeto.action.funcionario.ListaFuncionariosAction">
+			<result name="success">/funcionario/home.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="selecionaFuncionario"
+			class="br.com.empresa.projeto.action.funcionario.SelecionaFuncionarioAction">
+			<result name="success">/funcionario/edita.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="editaFuncionario"
+			class="br.com.empresa.projeto.action.funcionario.EditaFuncionarioAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">funcionarios</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="criaFuncionario"
+			class="br.com.empresa.projeto.action.funcionario.CriaFuncionarioAction">
+			<result name="success">/funcionario/cria.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="adicionaFuncionario"
+			class="br.com.empresa.projeto.action.funcionario.AdicionaFuncionarioAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">funcionarios</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="deletaFuncionario"
+			class="br.com.empresa.projeto.action.funcionario.DeletaFuncionarioAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">funcionarios</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<!-- exames e funcionários actions -->
+
+		<action name="listaExamesFuncionarios"
+			class="br.com.empresa.projeto.action.examefuncionario.ListaExamesFuncionariosRegistroAction">
+			<result name="success">/registraexame.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="registraExame"
+			class="br.com.empresa.projeto.action.examefuncionario.RegistraExameAction">
+			<exception-mapping
+				exception="br.com.empresa.projeto.exception.AdicionaExameException"
+				result="error" />
+			<result type="redirectAction" name="success">
+				<param name="actionName ">examesFuncionarios</param>
+			</result>
+			<result name="error">/erro.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="deletaRegistro"
+			class="br.com.empresa.projeto.action.examefuncionario.DeletaRegistroAction">
+			<result type="redirectAction" name="success">
+				<param name="actionName ">examesFuncionarios</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="selecionaRegistro"
+			class="br.com.empresa.projeto.action.examefuncionario.SelecionaRegistroAction">
+			<result name="success">/edita.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="editaRegistro"
+			class="br.com.empresa.projeto.action.examefuncionario.EditaRegistroAction">
+			<exception-mapping
+				exception="br.com.empresa.projeto.exception.AdicionaExameException"
+				result="error" />
+			<result type="redirectAction" name="success">
+				<param name="actionName ">examesFuncionarios</param>
+			</result>
+			<result name="error">/erro.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<!-- relatórios -->
+
+		<action name="relatorio"
+			class="br.com.empresa.projeto.action.relatorio.CriarRelatorioAction">
+			<result name="success">/relatorio/relatorio.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="gerarRelatorio"
+			class="br.com.empresa.projeto.action.relatorio.GerarRelatorioAction">
+			<result name="pdf">relatorio.pdf</result>
+			<result name="excel"></result>
+			<result name="html">/relatorio/relatorioweb.jsp</result>
+			<result name="empty">/relatorio/empty.html</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<!-- login -->
+
+		<action name="entrar"
+			class="br.com.empresa.projeto.action.login.EntrarAction">
+			<result name="success">login/login.jsp</result>
+		</action>
+
+		<action name="login"
+			class="br.com.empresa.projeto.action.login.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">exames</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+		<action name="logout"
+			class="br.com.empresa.projeto.action.login.LogoutAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+
+
+	</package>
 </struts>
