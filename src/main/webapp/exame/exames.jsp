@@ -35,12 +35,14 @@
 								<td class="title-td">${exame.nomeFuncionario}</td>
 								<td class="title-td">${exame.nomeExame}</td>
 								<td class="title-td">${exame.data}</td>
-								<td><a
-									href="selecionaRegistro?idExame=${exame.idExame}&idFuncionario=${exame.idFuncionario}&data=${exame.data}"
-									class="edit-btn"> Editar </a></td>
-								<td><a
-									onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')"
-									href="#" class="delete-btn-ef"> Deletar </a></td>
+								<td>
+									<a href="selecionaRegistro?idExame=${exame.idExame}&idFuncionario=${exame.idFuncionario}&data=${exame.data}"
+									class="edit-btn"> Editar </a>
+								</td>
+								<td>
+									<a onclick="confirmadorRegistro(${exame.idExame }, ${exame.idFuncionario}, '${exame.data }')"
+									href="#" class="delete-btn-ef"> Deletar </a>
+								</td>
 							</tr>
 						</s:forEach>
 					</tbody>

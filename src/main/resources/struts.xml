@@ -27,6 +27,15 @@
 				<param name="actionName">entrar</param>
 			</result>
 		</action>
+		
+		<action name="examesMaisRealizados"
+			class="br.com.empresa.projeto.action.exame.ExamesMaisRealizadosAction">
+			<result name="success">/exame/examesMaisRealizados.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">entrar</param>
+			</result>
+		</action>
+		
 
 		<action name="deletaExame"
 			class="br.com.empresa.projeto.action.exame.DeletaExameAction">

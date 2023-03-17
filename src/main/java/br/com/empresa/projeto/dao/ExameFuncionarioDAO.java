@@ -12,6 +12,7 @@ import java.util.List;
 
 import br.com.empresa.projeto.connection.ConnectionFactory;
 import br.com.empresa.projeto.model.ExameFuncionario;
+import br.com.empresa.projeto.vo.ExameFuncionarioVO;
 
 public class ExameFuncionarioDAO {
 
@@ -106,6 +107,35 @@ public class ExameFuncionarioDAO {
 		}
 		return list;
 	}
+	
+	public List<ExameFuncionarioVO> findFive(String dataInicial, String dataFinal) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		List<ExameFuncionarioVO> list = new ArrayList<>();
+		this.con.setAutoCommit(false);
+		try (PreparedStatement ps = this.con.prepareStatement("select ef.id_exame, e.nome , count(*) as quantidade from exame_funcionario ef \r\n"
+				+ "inner join exames e on ef.id_exame = e.id where ef.data >= ? \r\n"
+				+ "and ef.data <= ? group by id_exame order by quantidade desc limit 5")){
+			ps.setDate(1, Date.valueOf(dataInicial));
+			ps.setDate(2, Date.valueOf(dataFinal));
+			ps.execute();
+			this.con.commit();
+			try(ResultSet result = ps.getResultSet()){
+				while(result.next()) {
+					ExameFuncionarioVO exameFuncionario = new ExameFuncionarioVO(result.getInt("id_exame"), result.getInt("quantidade"), result.getString("nome"));
+					list.add(exameFuncionario);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return list;
+	}
+
 	
 	public void insert(ExameFuncionario exameFuncionario) throws SQLException {
 		if (this.con.isClosed()) {

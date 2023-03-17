@@ -53,6 +53,26 @@ tr {
 	font-family: monospace;
 }
 
+.verify-btn {
+	background: #8dbeba;
+	color: white;
+	height: 22px;
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 600;
+	padding: 16px 14px;
+	padding-bottom: 50px;
+	align-items: center;
+	font-family: monospace;
+	font-size: 18px;
+}
+
+#verify {
+	display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 .page-title {
 	display: flex;
 	align-items: center;
@@ -76,7 +96,7 @@ tr {
 	margin: auto;
 	padding: 8px;
 	background: #d7edeb;
-	min-height: 180px;
+	min-height: 220px;
 	min-width: 560px;
 }
 
@@ -259,6 +279,27 @@ tr {
 	border: none;
 }
 
+form .btnUpdate {
+	padding: 12px;
+	border-radius: 8px;
+	background: black;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 16px;
+	text-decoration: none;
+	font-weight: 600;
+	font-family: monospace;
+	text-align: center;
+	border: none;
+	margin-left: 20px;
+}
+
+#date {
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
 .btnGen:hover {
 	background: #6d9490;
 	color: black;
@@ -307,6 +348,6 @@ h5 {
 .empty {
 	margin-top: 50px;
 	margin-left: 50px;
-    font-size: 22px;
-    font-family: monospace;
+	font-size: 22px;
+	font-family: monospace;
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import br.com.empresa.projeto.dao.ExameFuncionarioDAO;
 import br.com.empresa.projeto.exception.AdicionaExameException;
 import br.com.empresa.projeto.model.ExameFuncionario;
+import br.com.empresa.projeto.vo.ExameFuncionarioVO;
 
 public class ExameFuncionarioBusiness {
 		
@@ -26,6 +27,10 @@ public class ExameFuncionarioBusiness {
 		
 		public List<ExameFuncionario> getByData(String dataInicial, String dataFinal) throws SQLException{
 			return this.dao.findByDate(dataInicial, dataFinal);
+		}
+		
+		public List<ExameFuncionarioVO> getFive(String dataInicial, String dataFinal) throws SQLException{
+			return this.dao.findFive(dataInicial, dataFinal);
 		}
 		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {

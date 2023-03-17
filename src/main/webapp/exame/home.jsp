@@ -39,5 +39,8 @@
 			</div>
 		</s:when>
 	</s:choose>
+	<div id="verify">
+		<a href="examesMaisRealizados?dataInicial=2000-01-01&dataFinal=2222-12-31" class="verify-btn">Verificar Exames mais Realizados</a>
+	</div>
 </body>
 </html>
