@@ -16,21 +16,28 @@
 		<h1>Exames</h1>
 		<a href="criaExame" class="add-btn">Adicionar Exame</a>
 	</div>
-	<div class="div-table">
-		<table class="table-container">
-			<tbody>
-				<s:forEach items="${exames}" var="exame">
-					<tr>
-						<td class="title-td">${exame.nome}</td>
-						<td class="edit"><a href="selecionaExame?id=${exame.id }"
-							class="edit-btn"> Editar </a></td>
-						<td class="delete"><a
-							onclick="confirmadorExame(${exame.id })" href="#"
-							class="delete-btn"> Deletar </a></td>
-					</tr>
-				</s:forEach>
-			</tbody>
-		</table>
-	</div>
+	<s:choose>
+		<s:when test="${numeroExames  == 0}">
+			<h2 class="empty">Não há exames disponíveis.</h2>
+		</s:when>
+		<s:when test="${numeroExames  > 0}">
+			<div class="div-table">
+				<table class="table-container">
+					<tbody>
+						<s:forEach items="${exames}" var="exame">
+							<tr>
+								<td class="title-td">${exame.nome}</td>
+								<td class="edit"><a href="selecionaExame?id=${exame.id }"
+									class="edit-btn"> Editar </a></td>
+								<td class="delete"><a
+									onclick="confirmadorExame(${exame.id })" href="#"
+									class="delete-btn"> Deletar </a></td>
+							</tr>
+						</s:forEach>
+					</tbody>
+				</table>
+			</div>
+		</s:when>
+	</s:choose>
 </body>
 </html>

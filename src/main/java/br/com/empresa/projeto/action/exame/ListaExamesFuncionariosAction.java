@@ -22,6 +22,8 @@ public class ListaExamesFuncionariosAction implements ServletRequestAware, Servl
 	private List<ExameFuncionario> exameFuncionarios = new ArrayList<>();
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+	@SuppressWarnings("unused")
+	private Integer numeroExamesFuncionarios;
 	
 	public String execute() throws SQLException {
 		HttpSession session = request.getSession();
@@ -53,6 +55,14 @@ public class ListaExamesFuncionariosAction implements ServletRequestAware, Servl
 
 	public HttpServletResponse getResponse() {
 		return response;
+	}
+
+	public Integer getNumeroExamesFuncionarios() {
+		return exameFuncionarios.size();
+	}
+
+	public void setNumeroExamesFuncionarios(Integer numeroExamesFuncionarios) {
+		this.numeroExamesFuncionarios = numeroExamesFuncionarios;
 	}
 	
 }

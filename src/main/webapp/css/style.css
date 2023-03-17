@@ -303,3 +303,10 @@ h5 {
 	padding-bottom: 40px;
 	font-family: monospace;
 }
+
+.empty {
+	margin-top: 50px;
+	margin-left: 50px;
+    font-size: 22px;
+    font-family: monospace;
+}

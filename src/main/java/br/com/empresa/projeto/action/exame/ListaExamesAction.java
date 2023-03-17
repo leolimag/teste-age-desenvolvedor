@@ -22,11 +22,13 @@ public class ListaExamesAction implements ServletRequestAware, ServletResponseAw
 	private HttpServletResponse response;
 	private ExameBusiness business = new ExameBusiness();
 	private List<Exame> exames = new ArrayList<>();
+	@SuppressWarnings("unused")
+	private Integer numeroExames;
 
 	public String execute() throws SQLException {
-		exames.addAll(business.getAll());
 		HttpSession session = request.getSession();
 		if (session.getAttribute("usuarioLogado") != null) {
+			exames.addAll(business.getAll());
 			return "success";
 		} else {
 			return "failed";
@@ -53,6 +55,14 @@ public class ListaExamesAction implements ServletRequestAware, ServletResponseAw
 
 	public HttpServletResponse getResponse() {
 		return response;
+	}
+
+	public Integer getNumeroExames() {
+		return exames.size();
+	}
+
+	public void setNumeroExames(Integer numeroExames) {
+		this.numeroExames = numeroExames;
 	}
 
 }

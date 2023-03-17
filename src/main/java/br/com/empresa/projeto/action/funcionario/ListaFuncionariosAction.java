@@ -22,6 +22,8 @@ public class ListaFuncionariosAction implements ServletRequestAware, ServletResp
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+	@SuppressWarnings("unused")
+	private Integer numeroFuncionarios;
 	
 	public String execute() throws SQLException {
 		HttpSession session = request.getSession();
@@ -53,6 +55,14 @@ public class ListaFuncionariosAction implements ServletRequestAware, ServletResp
 
 	public HttpServletResponse getResponse() {
 		return response;
+	}
+
+	public Integer getNumeroFuncionarios() {
+		return funcionarios.size();
+	}
+
+	public void setNumeroFuncionarios(Integer numeroFuncionarios) {
+		this.numeroFuncionarios = numeroFuncionarios;
 	}
 	
 }
