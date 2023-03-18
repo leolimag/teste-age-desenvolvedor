@@ -31,7 +31,7 @@
 					</thead>
 					<tbody>
 						<s:forEach items="${exameFuncionarios}" var="exame">
-							<tr>
+							<tr style="height: 55px;">
 								<td class="title-td">${exame.nomeFuncionario}</td>
 								<td class="title-td">${exame.nomeExame}</td>
 								<td class="title-td">${exame.data}</td>
