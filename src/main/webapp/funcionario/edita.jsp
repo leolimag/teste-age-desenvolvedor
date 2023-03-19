@@ -18,7 +18,7 @@
 				</div>
 				<div>
 					Nome: <input type="text" name="nome" id="nome"
-						value="${funcionario.nome}" class="input" required>
+						value="${funcionario.nome}" pattern="[a-zA-Z0-9]+" class="input" maxlength="40" required>
 				</div>
 				<div>
 					<input type="submit" value="Atualizar" class="btn">

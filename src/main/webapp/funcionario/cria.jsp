@@ -14,7 +14,7 @@
 			<div class="border">
 				<div>
 					Nome do Funcionário: <input type="text" name="nome" id="nome"
-						class="input" required>
+						class="input" maxlength="40" pattern="[a-zA-Z0-9]+" required>
 				</div>
 				<div>
 					<button type="submit" class="btn">Criar</button>

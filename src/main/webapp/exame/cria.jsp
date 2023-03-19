@@ -13,7 +13,7 @@
 		<form action="adicionaExame" method="post" class="form">
 			<div class="border">
 				<div>
-					Nome do Exame: <input type="text" name="nome" id="nome" class="input" required>
+					Nome do Exame: <input type="text" name="nome" id="nome" class="input" pattern="[a-zA-Z0-9]+" maxlength="40" required>
 				</div>
 				<div>
 					<button type="submit" class="btn">Criar</button>
