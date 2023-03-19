@@ -31,7 +31,7 @@ public class ExameFuncionarioDAO {
 		List<ExameFuncionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select f.id as id_funcionario, f.nome, e.nome as nomeExame, e.id as id_exame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
-				+ " inner join exames e where e.id = ef.id_exame")){
+				+ " inner join exames e where e.id = ef.id_exame order by data desc")){
 			ps.execute();
 			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
@@ -86,7 +86,7 @@ public class ExameFuncionarioDAO {
 		List<ExameFuncionario> list = new ArrayList<>();
 		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select e.id as id_exame, f.id as id_funcionario, f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
-				+ " inner join exames e where e.id = ef.id_exame and ef.data >= ? and ef.data <= ?")){
+				+ " inner join exames e where e.id = ef.id_exame and ef.data >= ? and ef.data <= ? order by data desc")){
 			ps.setDate(1, Date.valueOf(dataInicial));
 			ps.setDate(2, Date.valueOf(dataFinal));
 			ps.execute();
