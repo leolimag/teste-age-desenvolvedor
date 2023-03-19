@@ -16,7 +16,7 @@
 					Id: <input type="text" name="id" id="id" value="${exame.id}" class="input" readonly>
 				</div>
 				<div>
-					Nome do Exame: <input type="text" name="nome" pattern="[a-zA-Z0-9]+" id="nome" value="${exame.nome}" class="input"  maxlength="40" required>
+					Nome do Exame: <input type="text" name="nome" id="nome" value="${exame.nome}" class="input"  maxlength="40" required>
 				</div>
 				<div>
 					<input type="submit" value="Atualizar" class="btn">
