@@ -40,8 +40,6 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 				generatePdf();
 			} else if (tipo.equals("html")) {
 				return "html";
-			} else if (tipo.equals("excel")) {
-				generateExcel();
 			}
 			return "error";
 		} else {
@@ -105,15 +103,6 @@ public class GerarRelatorioAction implements ServletRequestAware, ServletRespons
 		RelatorioPDF pdf = new RelatorioPDF();
 		Document documento = new Document();
 		pdf.generate(documento, response, exameFuncionarios);
-	}
-
-	private void generateExcel() throws SQLException, IOException {
-		RelatorioExcel excel = new RelatorioExcel();
-		excel.generate(exameFuncionarios);
-
-		response.setContentType("application/xlsx");
-		response.addHeader("Content-Disposition", "attachment; filename=relatorio.xlsx");
-		// response.getOutputStream();
 	}
 
 }

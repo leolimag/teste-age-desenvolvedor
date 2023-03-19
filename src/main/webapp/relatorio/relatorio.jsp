@@ -31,7 +31,6 @@
 					<select name="tipo" id="relatorio" class="input" >
 						<option value="pdf">PDF</option>
 						<option value="html">Página web (HTML)</option>
-						<option value="excel">Excel</option>
 					</select>
 				</div>
 			</div>
