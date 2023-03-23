@@ -34,12 +34,10 @@ public class ExameBusiness {
 	
 	public void delete(Exame exame) throws SQLException {
 		ExameFuncionarioBusiness business =  new ExameFuncionarioBusiness();
-		List<ExameFuncionario> examefuncionarios = business.getAll();
-		examefuncionarios.forEach(ef -> {
-			if(ef.getIdExame() == exame.getId()) {
-				throw new DeletaExameException("Não é possível apagar este exame, pois já foi realizado por um funcionário.");
-			}
-		});
+		List<ExameFuncionario> exameFuncionarios = business.getByIdExame(exame.getId());
+		if (exameFuncionarios.size() > 0) {
+			throw new DeletaExameException("Não é possível apagar este exame, pois já foi realizado por um funcionário.");
+		}
 		this.dao.delete(exame);
 	}
 

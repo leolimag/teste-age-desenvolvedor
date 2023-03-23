@@ -25,6 +25,10 @@ public class ExameFuncionarioBusiness {
 			return this.dao.findById(idExame, idFuncionario, data);
 		}
 		
+		public List<ExameFuncionario> getByIdExame(Integer id) throws SQLException{
+			return this.dao.findByIdExame(id);
+		}
+		
 		public List<ExameFuncionario> getByData(String dataInicial, String dataFinal) throws SQLException{
 			return this.dao.findByDate(dataInicial, dataFinal);
 		}
