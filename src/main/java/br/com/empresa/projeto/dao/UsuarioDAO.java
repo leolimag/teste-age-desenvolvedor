@@ -25,10 +25,8 @@ public class UsuarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<Usuario> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from usuarios")){
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					Usuario usuario = new Usuario(result.getInt("id"), result.getString("email"), result.getString("senha"));

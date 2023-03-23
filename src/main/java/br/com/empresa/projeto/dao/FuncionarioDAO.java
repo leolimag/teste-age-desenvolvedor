@@ -39,10 +39,8 @@ public class FuncionarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<Funcionario> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from funcionarios")){
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					Funcionario funcionario = new Funcionario(result.getInt("id"), result.getString("nome"));
@@ -62,12 +60,10 @@ public class FuncionarioDAO {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
-		this.con.setAutoCommit(false);
 		Funcionario funcionario = null;
 		try (PreparedStatement ps = this.con.prepareStatement("select * from funcionarios where id = ?")){
 			ps.setInt(1, id);
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					funcionario = new Funcionario(result.getInt("id"), result.getString("nome"));

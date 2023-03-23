@@ -29,11 +29,9 @@ public class ExameFuncionarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<ExameFuncionario> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select f.id as id_funcionario, f.nome, e.nome as nomeExame, e.id as id_exame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
 				+ " inner join exames e where e.id = ef.id_exame order by data desc")){
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
@@ -55,14 +53,12 @@ public class ExameFuncionarioDAO {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
-		this.con.setAutoCommit(false);
 		ExameFuncionario exameFuncionario = null;
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exame_funcionario where id_exame = ? and id_funcionario = ? and data = ?")) {
 			ps.setInt(1, idExame);
 			ps.setInt(2, idFuncionario);
 			ps.setDate(3, Date.valueOf(data)); 
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()) {
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
@@ -83,7 +79,6 @@ public class ExameFuncionarioDAO {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
-		this.con.setAutoCommit(false);
 		ExameFuncionario exameFuncionario = null;
 		List<ExameFuncionario> list = new ArrayList<>();
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exame_funcionario where id_exame = ?")) {
@@ -111,13 +106,11 @@ public class ExameFuncionarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<ExameFuncionario> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select e.id as id_exame, f.id as id_funcionario, f.nome, e.nome as nomeExame, ef.data from funcionarios f inner join exame_funcionario ef on f.id = ef.id_funcionario\r\n"
 				+ " inner join exames e where e.id = ef.id_exame and ef.data >= ? and ef.data <= ? order by data desc")){
 			ps.setDate(1, Date.valueOf(dataInicial));
 			ps.setDate(2, Date.valueOf(dataFinal));
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					LocalDate date = result.getDate("data").toLocalDate();
@@ -140,14 +133,12 @@ public class ExameFuncionarioDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<ExameFuncionarioVO> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select ef.id_exame, e.nome , count(*) as quantidade from exame_funcionario ef \r\n"
 				+ "inner join exames e on ef.id_exame = e.id where ef.data >= ? \r\n"
 				+ "and ef.data <= ? group by id_exame order by quantidade desc limit 5")){
 			ps.setDate(1, Date.valueOf(dataInicial));
 			ps.setDate(2, Date.valueOf(dataFinal));
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					ExameFuncionarioVO exameFuncionario = new ExameFuncionarioVO(result.getInt("id_exame"), result.getInt("quantidade"), result.getString("nome"));

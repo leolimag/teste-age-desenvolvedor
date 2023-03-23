@@ -41,10 +41,8 @@ public class ExameDAO {
 			this.con = connectionFactory.getConnection();
 		}
 		List<Exame> list = new ArrayList<>();
-		this.con.setAutoCommit(false);
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exames")){
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					Exame exame = new Exame(result.getInt("id"), result.getString("nome"));
@@ -64,12 +62,10 @@ public class ExameDAO {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
 		}
-		this.con.setAutoCommit(false);
 		Exame exame = null;
 		try (PreparedStatement ps = this.con.prepareStatement("select * from exames where id = ?")){
 			ps.setInt(1, id);
 			ps.execute();
-			this.con.commit();
 			try(ResultSet result = ps.getResultSet()){
 				while(result.next()) {
 					exame = new Exame(result.getInt("id"), result.getString("nome"));
