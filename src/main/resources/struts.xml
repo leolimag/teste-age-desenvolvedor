@@ -82,6 +82,7 @@
 			<result name="failed" type="redirectAction">
 				<param name="actionName">entrar</param>
 			</result>
+			<result name="error">/exame/erroadiciona.jsp</result>
 		</action>
 
 		<!-- funcionário actions -->

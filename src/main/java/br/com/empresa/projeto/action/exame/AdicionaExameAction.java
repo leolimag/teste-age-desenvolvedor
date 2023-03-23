@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
 import br.com.empresa.projeto.business.ExameBusiness;
+import br.com.empresa.projeto.exception.InsereExameException;
 import br.com.empresa.projeto.model.Exame;
 
 @Action("adicionaExame")
@@ -19,6 +20,7 @@ public class AdicionaExameAction implements ServletRequestAware, ServletResponse
 	private ExameBusiness business = new ExameBusiness();
 	private Exame exame = new Exame();
 	private String nome;
+	private String mensagem;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
@@ -26,7 +28,12 @@ public class AdicionaExameAction implements ServletRequestAware, ServletResponse
 		HttpSession session = request.getSession();
 		if (session.getAttribute("usuarioLogado") != null) {
 			exame.setNome(nome);
-			business.insert(exame);
+			try {
+				business.insert(exame);
+			} catch (InsereExameException e) {
+				setMensagem(e.getMessage());
+				return "error";
+			}
 			return "success";
 		} else {
 			return "failed";
@@ -67,4 +74,12 @@ public class AdicionaExameAction implements ServletRequestAware, ServletResponse
 		return response;
 	}
 
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+	
 }

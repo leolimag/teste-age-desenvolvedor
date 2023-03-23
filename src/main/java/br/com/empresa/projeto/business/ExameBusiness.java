@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.com.empresa.projeto.dao.ExameDAO;
 import br.com.empresa.projeto.exception.DeletaExameException;
+import br.com.empresa.projeto.exception.InsereExameException;
 import br.com.empresa.projeto.model.Exame;
 import br.com.empresa.projeto.model.ExameFuncionario;
 
@@ -25,6 +26,10 @@ public class ExameBusiness {
 	}
 	
 	public void insert(Exame exame) throws SQLException {
+		Exame ex = this.dao.findByName(exame.getNome());
+		if (ex != null) {
+			throw new InsereExameException("Já há registrado um exame com este nome.");
+		}
 		this.dao.insert(exame);
 	}
 	

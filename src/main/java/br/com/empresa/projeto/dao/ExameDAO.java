@@ -80,6 +80,28 @@ public class ExameDAO {
 		return exame;
 	}
 	
+	public Exame findByName(String nome) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		Exame exame = null;
+		try (PreparedStatement ps = this.con.prepareStatement("select * from exames where nome = ?")){
+			ps.setString(1, nome);
+			ps.execute();
+			try(ResultSet result = ps.getResultSet()){
+				while(result.next()) {
+					exame = new Exame(result.getInt("id"), result.getString("nome"));
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return exame;
+	}
+	
 	public void update(Exame exame) throws SQLException {
 		if (this.con.isClosed()) {
 			this.con = connectionFactory.getConnection();
