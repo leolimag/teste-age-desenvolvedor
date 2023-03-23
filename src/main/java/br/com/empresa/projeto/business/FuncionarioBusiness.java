@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import br.com.empresa.projeto.dao.FuncionarioDAO;
-import br.com.empresa.projeto.model.ExameFuncionario;
 import br.com.empresa.projeto.model.Funcionario;
 
 public class FuncionarioBusiness {
@@ -32,17 +31,9 @@ public class FuncionarioBusiness {
 	}
 	
 	public void delete(Funcionario funcionario) throws SQLException {
+		Integer id = funcionario.getId();
 		ExameFuncionarioBusiness business = new ExameFuncionarioBusiness();
-		List<ExameFuncionario> exameFuncionarios = business.getAll();
-		exameFuncionarios.stream().forEach(e -> {
-			if(e.getIdFuncionario() == funcionario.getId()) {
-				try {
-					business.delete(e);
-				} catch (SQLException e1) {
-					System.out.println(e1);
-				}
-			}
-		});
+		business.deleteByIdFuncionario(id);
 		this.dao.delete(funcionario);
 	}
 	

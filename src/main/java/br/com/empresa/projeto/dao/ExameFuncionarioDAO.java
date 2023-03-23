@@ -192,6 +192,21 @@ public class ExameFuncionarioDAO {
 		}
 	}
 	
+	public void deleteByIdFuncionario(Integer id) throws SQLException {
+		if (this.con.isClosed()) {
+			this.con = connectionFactory.getConnection();
+		}
+		this.con.setAutoCommit(false);
+		try(PreparedStatement ps = this.con.prepareStatement("delete from exame_funcionario where id_funcionario = ?")) {
+			ps.setInt(1, id);
+			ps.execute();
+			this.con.commit();
+			this.con.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 	private LocalDate toLocalDate(String data) {
 		String dataArray[] = data.split("/");
 		LocalDate date = LocalDate.of(Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[1]), Integer.parseInt(dataArray[0]));

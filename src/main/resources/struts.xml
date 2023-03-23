@@ -15,9 +15,6 @@
 			<result name="failed" type="redirectAction">
 				<param name="actionName">entrar</param>
 			</result>
-			<result name="failed" type="redirectAction">
-				<param name="actionName">entrar</param>
-			</result>
 		</action>
 
 		<action name="examesFuncionarios"

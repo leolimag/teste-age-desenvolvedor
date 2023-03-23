@@ -61,6 +61,10 @@ public class ExameFuncionarioBusiness {
 			this.dao.delete(exameFuncionario);
 		}
 		
+		public void deleteByIdFuncionario(Integer id) throws SQLException {
+			this.dao.deleteByIdFuncionario(id);
+		}
+		
 		private LocalDate toLocalDate(String data) {
 			String dataArray[] = data.split("/");
 			LocalDate date = LocalDate.of(Integer.parseInt(dataArray[2]), Integer.parseInt(dataArray[1]), Integer.parseInt(dataArray[0]));
