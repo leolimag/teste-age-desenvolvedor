@@ -38,14 +38,10 @@ public class ExameFuncionarioBusiness {
 		}
 		
 		public void insert(ExameFuncionario exameFuncionario) throws SQLException {
-			List<ExameFuncionario> exameFuncionarios = this.dao.findAll();
-			exameFuncionarios.forEach(ef -> {
-				LocalDate date = toLocalDate(ef.getData());
-				String dateString = date.toString();
-				if(dateString.equals(exameFuncionario.getData()) && ef.getIdFuncionario() == exameFuncionario.getIdFuncionario() && ef.getIdExame() == exameFuncionario.getIdExame()) {
-					throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
-				}
-			});
+			ExameFuncionario ef = this.dao.findById(exameFuncionario.getIdExame(), exameFuncionario.getIdFuncionario(), exameFuncionario.getData());
+			if (ef != null) {
+				throw new AdicionaExameException("Já há um exame marcado nesta data para este funcionário. Tente novamente.");
+			}
 			this.dao.insert(exameFuncionario);
 		}
 		
